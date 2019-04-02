@@ -1,0 +1,29 @@
+a {
+    color: black;
+}
+
+select {
+    border-radius: 4px;
+}
+
+.font-size-15 {
+    font-size: 15px;
+}
+
+.font-size-11 {
+    font-size: 11px;
+}
+
+.font-size-23 {
+    font-size: 23px;
+}
+
+.mainRow {
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 5px
+}
+
+.dropdown-pad-left {
+    padding-left: 9px;
+}

@@ -1,0 +1,18 @@
+.cell-padding-left {
+    padding-left: 8px;
+}
+
+.font-size-15 {
+    font-size: 15px;
+}
+
+.file-upload {
+    margin: 4px;
+    width: 95%
+}
+
+.main-header {
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 5px
+}

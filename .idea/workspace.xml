@@ -2,24 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="612a267d-ddb7-4178-996b-6632d356e80e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/template/adminProfile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/template/editprofile.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/template/resource.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/template/search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/template/topic.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/template/userProfile.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/controller/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/DocumentResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/LinkResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/ReadingItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Resource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/ResourceRating.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Subscription.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Topic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/enums/ResourceType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/enums/Seriousness.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/enums/Visibility.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/TopicRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/template/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/template/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/template/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/template/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/static/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/static/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/template/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/template/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/template/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/template/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringLinkSharingApplication.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -41,7 +49,23 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="linksharing@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="linksharing@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="linksharing@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="linksharing: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="ExternalProjectsData">
@@ -72,96 +96,16 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/template/userProfile.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="233" column="18" selection-start-line="233" selection-start-column="18" selection-end-line="233" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/template/home.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="195" column="28" selection-start-line="195" selection-start-column="28" selection-end-line="195" selection-end-column="28" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#1;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/home.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/template/adminProfile.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-107">
-              <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
-              <folding>
-                <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/dashboard.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="31" column="15" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/template/dashboard.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="206" column="18" lean-forward="true" selection-start-line="194" selection-start-column="12" selection-end-line="206" selection-end-column="18" />
-              <folding>
-                <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#5;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#6;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -180,11 +124,9 @@
       <list>
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8f722e16-47a5-45f3-a927-22a38f0b1ca3/console.sql" />
         <option value="$PROJECT_DIR$/src/main/resources/static/dashboard.css" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/SpringBootApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringBootApplicatio.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringBootApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringApplication.java" />
         <option value="$PROJECT_DIR$/src/main/resources/template/dashboard.html" />
         <option value="$PROJECT_DIR$/src/main/resources/template/topic.html" />
         <option value="$PROJECT_DIR$/src/main/resources/template/search.html" />
@@ -195,6 +137,28 @@
         <option value="$PROJECT_DIR$/src/main/resources/template/userProfile.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/home.css" />
         <option value="$PROJECT_DIR$/src/main/resources/template/adminProfile.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/UserRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/TopicRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/applicaton.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/enums/Seriousness.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringLinkSharingApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Ratind.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/enums/Visibility.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Rating.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/enums/ResourceType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/LinkResource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Subscriber.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Topic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/ResourceRating.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/DocumentResource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Resource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/ReadingItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Subscription.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/User.java" />
       </list>
     </option>
   </component>
@@ -215,8 +179,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -255,7 +217,18 @@
               <item name="Link-Sharing" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="linksharing" type="462c0819:PsiDirectoryNode" />
+              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="link-sharing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Link-Sharing" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="linksharing" type="462c0819:PsiDirectoryNode" />
+              <item name="enums" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="link-sharing" type="b2602c69:ProjectViewProjectNode" />
@@ -263,31 +236,34 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="link-sharing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Link-Sharing" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="template" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554291318573" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554448621593" />
+    <property name="database.console.LAST_STATE" value="true" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -300,6 +276,53 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SpringLinkSharingApplication">
+    <configuration name="Link-Sharing [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="SpringApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ttn.spring.link-sharing.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ttn.linksharing.SpringApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringLinkSharingApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="ttn.spring.link-sharing.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ttn.linksharing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ttn.linksharing.SpringLinkSharingApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.SpringLinkSharingApplication" />
+        <item itemvalue="Gradle.Link-Sharing [dependencies]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -314,41 +337,43 @@
       <workItem from="1553099359477" duration="802000" />
       <workItem from="1554135191892" duration="221000" />
       <workItem from="1554182777233" duration="21351000" />
-      <workItem from="1554270267943" duration="16083000" />
+      <workItem from="1554270267943" duration="23285000" />
+      <workItem from="1554363666173" duration="4090000" />
+      <workItem from="1554399449665" duration="10330000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38457000" />
+    <option name="totallyTimeSpent" value="60079000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="700" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Web" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26136363" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.27045456" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="3" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="UI Designer" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" />
-      <window_info anchor="bottom" id="Java Enterprise" order="1" />
-      <window_info anchor="bottom" id="Spring" order="2" />
-      <window_info anchor="bottom" id="Message" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" />
-      <window_info anchor="bottom" id="Run" order="5" />
-      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="9" />
-      <window_info anchor="bottom" id="Build" order="10" visible="true" weight="0.32924694" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32635254" />
-      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="14" />
-      <window_info anchor="bottom" id="Version Control" order="15" weight="0.32924694" />
+      <window_info anchor="bottom" id="Database Console" order="0" weight="0.32924694" />
+      <window_info anchor="bottom" id="Messages" order="1" />
+      <window_info anchor="bottom" id="Java Enterprise" order="2" />
+      <window_info anchor="bottom" id="Spring" order="3" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.32924694" />
+      <window_info anchor="bottom" id="Run" order="6" weight="0.32924694" />
+      <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Build" order="11" weight="0.32924694" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.3257443" />
+      <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="15" />
+      <window_info anchor="bottom" id="Version Control" order="16" weight="0.32924694" />
       <window_info anchor="right" id="Bean Validation" order="0" weight="0.32954547" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -369,20 +394,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8f722e16-47a5-45f3-a927-22a38f0b1ca3/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="34" column="74" selection-start-line="34" selection-start-column="74" selection-end-line="34" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/template/search.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -450,13 +461,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/adminTable.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/adminTable.html" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
@@ -487,10 +492,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/adminProfile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="43" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="4" column="15" lean-forward="true" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/template/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="206" column="18" lean-forward="true" selection-start-line="194" selection-start-column="12" selection-end-line="206" selection-end-column="18" />
+        <state relative-caret-position="152">
+          <caret line="198" column="49" lean-forward="true" selection-start-line="198" selection-start-column="49" selection-end-line="198" selection-end-column="49" />
           <folding>
             <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -509,16 +534,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/home.css">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/userProfile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
+        <state relative-caret-position="3495">
+          <caret line="233" column="18" selection-start-line="233" selection-start-column="18" selection-end-line="233" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://8f722e16-47a5-45f3-a927-22a38f0b1ca3/schema/linksharing/table/topic" />
+    <entry file="das://8f722e16-47a5-45f3-a927-22a38f0b1ca3/schema/linksharing/table/user" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringLinkSharingApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/UserRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/TopicRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/template/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
+        <state relative-caret-position="690">
           <caret line="195" column="28" selection-start-line="195" selection-start-column="28" selection-end-line="195" selection-end-column="28" />
           <folding>
             <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -530,21 +590,137 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/userProfile.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="233" column="18" selection-start-line="233" selection-start-column="18" selection-end-line="233" selection-end-column="18" />
+        <state relative-caret-position="75">
+          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/template/adminProfile.html">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-107">
-          <caret line="63" column="19" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
+        <state relative-caret-position="90">
+          <caret line="9" column="13" lean-forward="true" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/enums/Visibility.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
           <folding>
-            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#table#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#155#156#0" expanded="true" />
+            <element signature="e#189#190#0" expanded="true" />
+            <element signature="e#221#222#0" expanded="true" />
+            <element signature="e#249#250#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/enums/Seriousness.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/enums/ResourceType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/javax.persistence/javax.persistence-api/2.2/462dff65f6f8bde02ee9d8afe07fe9d50268199c/javax.persistence-api-2.2-sources.jar!/javax/persistence/UniqueConstraint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/DocumentResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/ReadingItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="3" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Resource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Topic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Subscription.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/ResourceRating.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="12" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/LinkResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -552,9 +728,82 @@
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>groovy-2.5.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>ttn.spring.link-sharing</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Gradle: antlr:antlr:2.7.7</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

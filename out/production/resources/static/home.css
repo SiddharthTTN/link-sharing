@@ -16,3 +16,10 @@
     border-radius: 4px;
     padding: 5px
 }
+.pad-div{
+    padding: 8px;
+}
+
+.text-align-right{
+    text-align: right;
+}

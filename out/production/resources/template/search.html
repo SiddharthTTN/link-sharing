@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard</title>
 
+    <title>Search</title>
     <link rel="stylesheet" href="../static/bootstrap.min.css"/>
     <link rel="stylesheet" href="../static/dashboard.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
@@ -14,19 +14,24 @@
 
     <script src="../static/jquery.min.js"></script>
     <script src="../static/bootstrap.min.js"></script>
-
+    <style>
+        .align-text-center {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+
 <br>
 <div class="container">
     <div class="row mainRow">
-        <div class="col-md-4">
+        <div class="col-md-5">
             <a href="" class="link"><h3>Link Sharing</h3></a>
         </div>
 
         <!--Search Bar-->
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="input-group">
                 <div class="input-group-prepend bg-white">
                     <span class="input-group-text border-right-0 rounded-right bg-white"><i
@@ -45,75 +50,9 @@
 
         <div class="col-md-2">
             <div>
-                <span id="basic-addon" class="font-size-23"><a data-toggle="modal" href="#createTopic"><i
-                        class="fas fa-comment fa-1.5x"></i></a> &nbsp <a data-toggle="modal" href="#sendInvite"><i
-                        class="far fa-envelope"></i></a> &nbsp <a data-toggle="modal" href="#shareLink"><i
+                <span id="basic-addon" class="float-right font-size-23"><a data-toggle="modal" href="#shareLink"><i
                         class="fas fa-link"></i></a> &nbsp <a data-toggle="modal" href="#shareDoc"><i
                         class="fab fa-creative-commons-share"></i></a></span>
-            </div>
-        </div>
-
-        <!-- Modal For Create Topic -->
-
-        <div class="modal fade" id="createTopic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Create Topic: </h5>
-                    </div>
-                    <div class="modal-body">
-                        <form id="createTopicForm" method="post">
-                            <p><label>Name: </label>
-                                <input type="text" class="form-control" placeholder="Name" required></p><br>
-                            <p><label>Visibility: </label>
-                                <select class="custom-select float-right col-md-6">
-                                    <Option>Public</Option>
-                                    <Option>Only Friends</Option>
-                                    <Option>Only Me</Option>
-                                </select>
-                            </p>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Save</button>
-                                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal For Send Invitation -->
-
-        <div id="sendInvite" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Send Invitation: </h5>
-                    </div>
-                    <div class="modal-body">
-                        <form id="sendInviteForm" method="post">
-                            <p><label>Email: </label>
-                                <input type="email" class="form-control" placeholder="Email" required></p><br>
-                            <p><label>Topic : </label>
-                                <select class="custom-select col-md-7">
-                                    <Option>Public</Option>
-                                    <Option>Only Friends</Option>
-                                    <Option>Only Me</Option>
-                                </select>
-                            </p>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Invite</button>
-                                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -195,12 +134,10 @@
             <div class="nav navbar float-right">
                 <li class="dropdown"><i class="fas fa-user"> &nbsp &nbsp </i><a class="dropdown-toggle"
                                                                                 data-toggle="dropdown"
-                                                                                href="#">Profile<span
+                                                                                href="#">User<span
                         class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-pad-left">
-                        <li><a href="#"> Users</a></li>
-                        <li><a href="#"> Topic</a></li>
-                        <li><a href="#"> Posts</a></li>
+                        <li><a href="#"> Profile</a></li>
                         <li><a href="#"> Logout</a></li>
                     </ul>
                 </li>
@@ -213,121 +150,6 @@
 
     <div class="row">
         <div class="col-md-5">
-
-            <!--User Details-->
-
-            <div class="row card mb-3">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg" class="card-img"
-                             alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                            <p class="card-text">
-                                <small class="text-muted">
-                                    <i class="fab fa-facebook-f">&nbsp &nbsp</i><i class="fab fa-twitter"></i>&nbsp
-                                    &nbsp<i class="fab fa-google-plus"></i></small>
-                                <span class="float-right font-size-15"><a class="link" href="">view post..</a></span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--Subscriptions-->
-
-            <div class="row">
-                <div class="card border-dark mb-3">
-                    <div class="card-header">Subscriptions<span class="float-right"><a class="link" href="#">View All</a> </span>
-                    </div>
-                    <div class="card-body text-dark">
-                        <div class="card mb-3">
-                            <div class="row no-gutters">
-                                <div class="col-md-3">
-                                    <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg"
-                                         class="card-img" alt="...">
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a>Grails</a></h5>
-                                        <p class="card-text">
-                                        <table class="w-100 font-size-15" cellspacing="14px">
-                                            <tr>
-                                                <td>@uday</td>
-                                                <td>Subscriptions</td>
-                                                <td>Posts</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Unsubscribe</a></td>
-                                                <td>50</td>
-                                                <td>30</td>
-                                            </tr>
-                                        </table>
-                                        </p>
-                                        <p class="card-text">
-                                            <small class="text-muted">
-                                                <select class="col-md-4">
-                                                    <option>Serious</option>
-                                                    <option></option>
-                                                    <option></option>
-                                                </select>&nbsp
-                                                <select class="col-md-4">
-                                                    <option>Private</option>
-                                                    <option></option>
-                                                    <option></option>
-                                                </select>&nbsp &nbsp &nbsp
-                                                <a href="#"><i class="far fa-envelope">&nbsp &nbsp</i></a><a href="#"><i
-                                                    class="far fa-edit"></i></a>&nbsp &nbsp<a href="#"><i
-                                                    class="fas fa-trash-alt"></i></a></small>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="row no-gutters">
-                                <div class="col-md-3">
-                                    <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg"
-                                         class="card-img" alt="...">
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a>Grails</a></h5>
-                                        <p class="card-text">
-                                        <table class="w-100 font-size-15" cellspacing="14px">
-                                            <tr>
-                                                <td>@uday</td>
-                                                <td>Subscriptions</td>
-                                                <td>Posts</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Unsubscribe</a></td>
-                                                <td>50</td>
-                                                <td>30</td>
-                                            </tr>
-                                        </table>
-                                        </p>
-                                        <p class="card-text" align="right">
-                                            <small class="text-muted">
-                                                <select class="col-md-4">
-                                                    <option>Serious</option>
-                                                    <option></option>
-                                                    <option></option>
-                                                </select>&nbsp &nbsp &nbsp
-                                                <a href="#"><i class="far fa-envelope">&nbsp &nbsp</i></a></small>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
 
             <!--Trending Topics-->
 
@@ -409,16 +231,96 @@
                     </div>
                 </div>
             </div>
+
+            <!--Top Posts-->
+
+            <div class="row">
+                <div class="card border-dark mb-3 w-100">
+                    <div class="card-header">Search Results
+                    </div>
+                    <div class="card-body text-dark">
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <div class="col-md-3">
+                                    <div>
+                                        <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg"
+                                             class="card-img" alt="..."></div>
+                                    <br>
+                                    <br>
+                                    <div class="align-content-center align-text-center">
+                                    <span class="align-items-center"><small
+                                            class="text-muted">
+                                        <i class="fab fa-facebook-f">&nbsp &nbsp</i><i
+                                            class="fab fa-twitter"></i>&nbsp &nbsp<i
+                                            class="fab fa-google-plus"></i></small></span></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5> <span>@Uday</span>
+                                        <p class="card-text">This is a wider card with supporting text below as a
+                                            natural lead-in to additional content. This content is a little bit
+                                            longer.</p>
+                                        <p class="card-text">
+
+                                            <span class="font-size-11 float-right link"><a class="link"
+                                                                                           href="">Download</a>&nbsp&nbsp&nbsp<a
+                                                    class="link"
+                                                    href="">View Full Size</a>&nbsp&nbsp&nbsp<a class="link"
+                                                                                                href="">Mark as Read</a>&nbsp&nbsp&nbsp<a
+                                                    class="link"
+                                                    href="">View post</a></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="row no-gutters">
+                                <div class="col-md-3">
+                                    <div>
+                                        <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg"
+                                             class="card-img" alt="..."></div>
+                                    <br>
+                                    <br>
+                                    <div class="align-content-center align-text-center">
+                                    <span class="align-items-center"><small
+                                            class="text-muted">
+                                        <i class="fab fa-facebook-f">&nbsp &nbsp</i><i
+                                            class="fab fa-twitter"></i>&nbsp &nbsp<i
+                                            class="fab fa-google-plus"></i></small></span></div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5><span>@Uday</span>
+                                        <p class="card-text">This is a wider card with supporting text below as a
+                                            natural lead-in to additional content. This content is a little bit
+                                            longer.</p>
+                                        <p class="card-text">
+                                            <span class="font-size-11 float-right link"><a class="link"
+                                                                                           href="">Download</a>&nbsp&nbsp&nbsp<a
+                                                    class="link"
+                                                    href="">View Full Size</a>&nbsp&nbsp&nbsp<a class="link"
+                                                                                                href="">Mark as Read</a>&nbsp&nbsp&nbsp<a
+                                                    class="link"
+                                                    href="">View post</a></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-1"></div>
 
         <div class="col-md-6">
 
-            <!--Inbox-->
+            <!--Search Results-->
             <div class="row">
                 <div class="card border-dark mb-3 w-100">
-                    <div class="card-header">Inbox
+                    <div class="card-header">Search Results
                     </div>
                     <div class="card-body text-dark">
                         <div class="card mb-3">
@@ -439,9 +341,11 @@
                                                     class="fab fa-twitter"></i>&nbsp &nbsp<i
                                                     class="fab fa-google-plus"></i></small>
                                             <span class="font-size-11 float-right link"><a class="link"
-                                                    href="">Download</a>&nbsp&nbsp&nbsp<a class="link"
+                                                                                           href="">Download</a>&nbsp&nbsp&nbsp<a
+                                                    class="link"
                                                     href="">View Full Size</a>&nbsp&nbsp&nbsp<a class="link"
-                                                    href="">Mark as Read</a>&nbsp&nbsp&nbsp<a class="link"
+                                                                                                href="">Mark as Read</a>&nbsp&nbsp&nbsp<a
+                                                    class="link"
                                                     href="">View post</a></span>
                                         </p>
                                     </div>
@@ -466,9 +370,11 @@
                                                     class="fab fa-twitter"></i>&nbsp &nbsp<i
                                                     class="fab fa-google-plus"></i></small>
                                             <span class="font-size-11 float-right link"><a class="link"
-                                                    href="">Download</a>&nbsp&nbsp&nbsp<a class="link"
+                                                                                           href="">Download</a>&nbsp&nbsp&nbsp<a
+                                                    class="link"
                                                     href="">View Full Size</a>&nbsp&nbsp&nbsp<a class="link"
-                                                    href="">Mark as Read</a>&nbsp&nbsp&nbsp<a class="link"
+                                                                                                href="">Mark as Read</a>&nbsp&nbsp&nbsp<a
+                                                    class="link"
                                                     href="">View post</a></span>
                                         </p>
                                     </div>
@@ -481,7 +387,6 @@
 
         </div>
     </div>
-
 </div>
 </body>
 </html>

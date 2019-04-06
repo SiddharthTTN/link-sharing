@@ -8,18 +8,18 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"topicName", "user"}))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"name", "user_id"}))
 public class Topic {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String topicName;
+    private String name;
 
     @OneToOne
-    User user;
+    private User user;
 
-    Visibility visibility;
+    private Visibility visibility;
 
     @OneToMany(mappedBy = "topic")
     private List<Resource> resource;

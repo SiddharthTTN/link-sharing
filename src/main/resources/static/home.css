@@ -23,3 +23,7 @@
 .text-align-right{
     text-align: right;
 }
+
+#errormsg{
+    color: red;
+}

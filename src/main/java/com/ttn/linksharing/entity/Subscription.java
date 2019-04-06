@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"user", "topic"}))
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "topic_id"}))
 public class Subscription {
 
     @Id

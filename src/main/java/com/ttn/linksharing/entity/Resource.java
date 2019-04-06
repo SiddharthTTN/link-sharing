@@ -6,9 +6,11 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@MappedSuperclass
+@Entity
 @Data
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Resource {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

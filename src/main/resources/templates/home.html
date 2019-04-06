@@ -2,8 +2,8 @@
 <html xmlns:th="www.thymleaf.org">
 <head>
     <title>Home</title>
-    <link rel="stylesheet" href="../static/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../static/home.css"/>
+    <link rel="stylesheet" th:href="@{bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{home.css}"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
 
@@ -11,17 +11,37 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
 
-    <script src="../static/jquery.min.js"></script>
-    <script src="../static/bootstrap.min.js"></script>
+    <script th:src="@{jquery.min.js}"></script>
+    <script th:src="@{bootstrap.min.js}"></script>
+    <script th:src="@{imageDisplay.js}"></script>
+    <style>
+        #blah {
+            max-width: 200px;
+            height: 200px;
+            margin-top: 15px;
+        }
 
+    </style>
 </head>
 <body>
 <br>
 <div class="container">
     <!--Header-->
     <div class="row main-header">
-        <div class="col-md-8">
+        <div class="col-md-3">
             <a href=""><h3>Link Sharing</h3></a>
+        </div>
+        <div class="col-md-5 position-relative">
+            <div th:if="${register}" id="sucessRegister" style="z-index: 2;position: absolute">
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <span th:text="${message}" data-dismiss="alert"></span>
+                </div>
+            </div>
+            <div th:if="${errorlogin}" id="errordisplay" style="z-index: 2;position: absolute">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <span th:text="${message}" data-dismiss="alert"></span>
+                </div>
+            </div>
         </div>
         <div class="col-md-4">
             <div class="input-group">
@@ -156,31 +176,33 @@
 
         <div class="col-md-5">
 
+
+
             <!--Login-->
             <div class="row">
                 <div class="card border-dark mb-3 w-100">
                     <div class="card-header">Login
                     </div>
                     <div class="card-body text-dark">
-                        <form>
+                        <form action="/login" method="post" th:object="${user}">
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Email/Username</label>
+                                <label for="loginusername" class="col-sm-4 col-form-label">Email/Username</label>
                                 <div class="col-md-8">
-                                    <input type="email" class="form-control" id="inputEmail3"
-                                           placeholder="Email / Username">
+                                    <input type="text" class="form-control" id="loginusername" name="username"
+                                           placeholder="Email / Username" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword3" class="col-sm-4 col-form-label">Password</label>
+                                <label for="loginpassword" class="col-sm-4 col-form-label">Password</label>
                                 <div class="col-md-8">
-                                    <input type="password" class="form-control" id="inputPassword3"
-                                           placeholder="Password">
+                                    <input type="password" class="form-control" id="loginpassword" name="password"
+                                           placeholder="Password" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-md-8">
-                                    <a href="" class="align-content-center">Forget Password</a>
+                                    <a href="/reset" class="align-content-center">Forget Password</a>
                                 </div>
                                 <div class="col-md-4">
                                     <button type="submit" class="btn btn-primary">Login</button>
@@ -192,60 +214,72 @@
             </div>
 
             <!--Register-->
-
-            <div class="row">
+            <div class="row" >
                 <div class="card border-dark mb-3 w-100">
                     <div class="card-header">Register
                     </div>
                     <div class="card-body text-dark">
-                        <form action="/register" method="post" enctype="multipart/form-data">
+                        <form action="/register" method="post" th:object="${user}" enctype="multipart/form-data">
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-md-5 col-form-label">First Name</label>
+                                <label for="firstName" class="col-md-5 col-form-label">First Name</label>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                                    <input type="text" class="form-control" name="firstName" id="firstName"
+                                           placeholder="First Name" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-md-5 col-form-label">Last Name</label>
+                                <label for="lastName" class="col-md-5 col-form-label">Last Name</label>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                                    <input type="text" class="form-control" name="lastName" id="lastName"
+                                           placeholder="Last Name" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-md-5 col-form-label">Email </label>
+                                <label for="email" class="col-md-5 col-form-label">Email </label>
                                 <div class="col-md-7">
-                                    <input type="email" class="form-control" id="email" placeholder="Email">
+                                    <input type="email" class="form-control" name="email" id="email"
+                                           placeholder="Email" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-md-5 col-form-label">Username</label>
+                                <label for="username" class="col-md-5 col-form-label">Username</label>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" id="username" placeholder="Username">
+                                    <input type="text" class="form-control" name="username" id="username"
+                                           placeholder="Username" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword3" class="col-md-5 col-form-label">Password</label>
+                                <label for="password" class="col-md-5 col-form-label">Password</label>
                                 <div class="col-md-7">
-                                    <input type="password" class="form-control" id="password"
-                                           placeholder="Password">
+                                    <input type="password" class="form-control" name="password" id="password"
+                                           placeholder="Password" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword3" class="col-md-5 col-form-label">Confirm Password</label>
+                                <label for="confirmPassword" class="col-md-5 col-form-label">Confirm Password</label>
                                 <div class="col-md-7">
-                                    <input type="password" class="form-control" id="confirmPassword"
-                                           placeholder="Confirm Password">
+                                    <input type="password" class="form-control" name="confirmPassword"
+                                           id="confirmPassword"
+                                           placeholder="Confirm Password" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword3" class="col-md-5 col-form-label ">Photo</label>
+                                <label for="userImage" class="col-md-5 col-form-label ">Photo</label>
                                 <div class="col-md-7">
-                                    <input type="file" class="custom-file custom-file-input " id="userImage">
+                                    <input type="file" class="custom-file custom-file-input" onchange="readURL(this)"
+                                           name="userImage"
+                                           id="userImage" required>
                                     <label class="custom-file-label file-upload" for="userImage">Choose
                                         photo</label>
+                                    <img id="blah" class="float-right">
                                 </div>
                             </div>
                             <br>
+                            <div th:if="${status}" id="alertMessage">
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    <span th:text="${message}" data-dismiss="alert"></span>
+                                </div>
+                            </div>
                             <div class="form-group row">
                                 <div class="col-md-8">
                                 </div>
@@ -253,13 +287,22 @@
                                     <button type="submit" class="btn btn-primary">Register</button>
                                 </div>
                             </div>
+                            <br>
                         </form>
                     </div>
                 </div>
             </div>
 
+            <!--<img th:src="@{file:///home/ttn/linksharing-attatchments/userimage/1554535505858userImage}">-->
+
         </div>
     </div>
 </div>
 </body>
+<script>
+    $(document).ready(function(){
+        $("#sucessRegister").fadeOut(6000);
+        $("#errordisplay").fadeOut(6000);
+    });
+</script>
 </html>

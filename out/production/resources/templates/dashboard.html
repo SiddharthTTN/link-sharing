@@ -5,6 +5,7 @@
 
     <link rel="stylesheet" th:href="@{bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{home.css}"/>
+    <link rel="stylesheet" th:href="@{adminTable.css}"/>
     <link rel="stylesheet" th:href="@{dashboard.css}"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
@@ -130,8 +131,8 @@
                     </div>
                     <div class="modal-body">
                         <form id="shareDocForm" method="post">
-                            <p><label>Document: </label>
-                                <input type="file" class="form-control" placeholder="Upload File" required></p>
+                            <p><label>Document: </label><div class="pad-div" style="border: lightgray 1px solid;border-radius: 4px">
+                                <input type="file" id="document" required></div></p>
                             <br>
                             <p><label>Description : </label>
                                 <textarea class="form-control" required></textarea>
@@ -197,13 +198,14 @@
             <div class="nav navbar float-right">
                 <li class="dropdown"><i class="fas fa-user"> &nbsp &nbsp </i><a class="dropdown-toggle"
                                                                                 data-toggle="dropdown"
-                                                                                href="#">Profile<span
+                                                                                href="#" th:text="*{user.firstName}"><span
                         class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-pad-left">
+                        <li><a th:href="@{/profile}"> Profile</a></li>
                         <li><a href="#"> Users</a></li>
                         <li><a href="#"> Topic</a></li>
                         <li><a href="#"> Posts</a></li>
-                        <li><a href="#"> Logout</a></li>
+                        <li><a th:href="@{/logout}"> Logout</a></li>
                     </ul>
                 </li>
             </div>
@@ -226,14 +228,19 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <h5 th:text="*{user.firstName + ' ' + user.lastName}"></h5>
+                            <span th:text="*{'@'+ user.username}" class="small"></span>
                             <p class="card-text">
-                                <small class="text-muted">
-                                    <i class="fab fa-facebook-f">&nbsp &nbsp</i><i class="fab fa-twitter"></i>&nbsp
-                                    &nbsp<i class="fab fa-google-plus"></i></small>
-                                <span class="float-right font-size-15"><a class="link" href="">view post..</a></span>
+                            <table class="w-100 font-size-15" cellspacing="14px">
+                                <tr>
+                                    <th>Subscriptions</th>
+                                    <th>Topics</th>
+                                </tr>
+                                <tr>
+                                    <td>50</td>
+                                    <td>30</td>
+                                </tr>
+                            </table>
                             </p>
                         </div>
                     </div>
@@ -244,7 +251,8 @@
 
             <div class="row">
                 <div class="card border-dark mb-3">
-                    <div class="card-header">Subscriptions<span class="float-right"><a class="link" href="#">View All</a> </span>
+                    <div class="card-header">Subscriptions<span class="float-right"><a class="link"
+                                                                                       href="#">View All</a> </span>
                     </div>
                     <div class="card-body text-dark">
                         <div class="card mb-3">
@@ -441,9 +449,11 @@
                                                     class="fab fa-twitter"></i>&nbsp &nbsp<i
                                                     class="fab fa-google-plus"></i></small>
                                             <span class="font-size-11 float-right link"><a class="link"
-                                                    href="">Download</a>&nbsp&nbsp&nbsp<a class="link"
+                                                                                           href="">Download</a>&nbsp&nbsp&nbsp<a
+                                                    class="link"
                                                     href="">View Full Size</a>&nbsp&nbsp&nbsp<a class="link"
-                                                    href="">Mark as Read</a>&nbsp&nbsp&nbsp<a class="link"
+                                                                                                href="">Mark as Read</a>&nbsp&nbsp&nbsp<a
+                                                    class="link"
                                                     href="">View post</a></span>
                                         </p>
                                     </div>
@@ -468,9 +478,11 @@
                                                     class="fab fa-twitter"></i>&nbsp &nbsp<i
                                                     class="fab fa-google-plus"></i></small>
                                             <span class="font-size-11 float-right link"><a class="link"
-                                                    href="">Download</a>&nbsp&nbsp&nbsp<a class="link"
+                                                                                           href="">Download</a>&nbsp&nbsp&nbsp<a
+                                                    class="link"
                                                     href="">View Full Size</a>&nbsp&nbsp&nbsp<a class="link"
-                                                    href="">Mark as Read</a>&nbsp&nbsp&nbsp<a class="link"
+                                                                                                href="">Mark as Read</a>&nbsp&nbsp&nbsp<a
+                                                    class="link"
                                                     href="">View post</a></span>
                                         </p>
                                     </div>

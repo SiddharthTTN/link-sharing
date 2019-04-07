@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="../static/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../static/dashboard.css"/>
+    <link rel="stylesheet" th:href="@{bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{home.css}"/>
+    <link rel="stylesheet" th:href="@{adminTable.css}"/>
+    <link rel="stylesheet" th:href="@{dashboard.css}"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
 
@@ -12,8 +14,17 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
 
-    <script src="../static/jquery.min.js"></script>
-    <script src="../static/bootstrap.min.js"></script>
+    <script th:src="@{jquery.min.js}"></script>
+    <script th:src="@{bootstrap.min.js}"></script>
+    <script th:src="@{imageDisplay.js}"></script>
+    <style>
+        #blah {
+            max-width: 200px;
+            height: 200px;
+            margin-top: 15px;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -26,7 +37,17 @@
 
         <!--Search Bar-->
 
-        <div class="col-md-5">
+        <div class="col-md-5 position-relative">
+            <div th:if="${register}" id="sucessRegister" style="z-index: 2;position: absolute">
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <span th:text="${message}" data-dismiss="alert"></span>
+                </div>
+            </div>
+            <div th:if="${errorlogin}" id="errordisplay" style="z-index: 2;position: absolute">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <span th:text="${message}" data-dismiss="alert"></span>
+                </div>
+            </div>
             <div class="input-group">
                 <div class="input-group-prepend bg-white">
                     <span class="input-group-text border-right-0 rounded-right bg-white"><i
@@ -47,11 +68,12 @@
             <div class="nav navbar float-right">
                 <li class="dropdown"><i class="fas fa-user"> &nbsp &nbsp </i><a class="dropdown-toggle"
                                                                                 data-toggle="dropdown"
-                                                                                href="#">User<span
+                                                                                href="#"
+                                                                                th:text="*{user.firstName}"><span
                         class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-pad-left">
-                        <li><a href="#"> Profile</a></li>
-                        <li><a href="#"> Logout</a></li>
+                        <li><a th:href="@{/profile}"> Profile</a></li>
+                        <li><a th:href="@{/logout}"> Logout</a></li>
                     </ul>
                 </li>
             </div>
@@ -74,14 +96,19 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                            <h5 th:text="*{user.firstName + ' ' + user.lastName}"></h5>
+                            <span th:text="*{'@'+ user.username}" class="small"></span>
                             <p class="card-text">
-                                <small class="text-muted">
-                                    <i class="fab fa-facebook-f">&nbsp &nbsp</i><i class="fab fa-twitter"></i>&nbsp
-                                    &nbsp<i class="fab fa-google-plus"></i></small>
-                                <span class="float-right font-size-15"><a class="link" href="">view post..</a></span>
+                            <table class="w-100 font-size-15" cellspacing="14px">
+                                <tr>
+                                    <th>Subscriptions</th>
+                                    <th>Topics</th>
+                                </tr>
+                                <tr>
+                                    <td>50</td>
+                                    <td>30</td>
+                                </tr>
+                            </table>
                             </p>
                         </div>
                     </div>
@@ -93,7 +120,7 @@
             <div class="row">
                 <div class="card border-dark mb-3 w-100">
                     <div class="card-header">
-                        <div>Topics: </div>
+                        <div>Topics:</div>
                     </div>
                     <div class="card-body text-dark">
                         <div class="card mb-3">
@@ -154,36 +181,42 @@
                     <div class="card-header">Profile
                     </div>
                     <div class="card-body text-dark">
-                        <form>
+                        <form method="post" action="/updateProfile" th:object="${user}" enctype="multipart/form-data">
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-md-5 col-form-label">First Name</label>
+                                <label for="firstName" class="col-md-5 col-form-label">First Name</label>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" id="" placeholder="First Name">
+                                    <input type="text" class="form-control" id="firstName" name="firstName"
+                                           placeholder="First Name" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-md-5 col-form-label">Last Name</label>
+                                <label for="lastName" class="col-md-5 col-form-label">Last Name</label>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" id="" placeholder="Last Name">
+                                    <input type="text" class="form-control" id="lastName" name="lastName"
+                                           placeholder="Last Name" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputEmail3" class="col-md-5 col-form-label">Username</label>
+                                <label for="username" class="col-md-5 col-form-label">Username</label>
                                 <div class="col-md-7">
-                                    <input type="text" class="form-control" id="" placeholder="Username">
+                                    <input type="text" class="form-control" id="username" name="username"
+                                           placeholder="Username" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword3" class="col-md-5 col-form-label ">Photo</label>
+                                <label for="userImage" class="col-md-5 col-form-label ">Photo</label>
                                 <div class="col-md-7">
-                                    <input type="file" class="custom-file custom-file-input " id="customFile">
-                                    <label class="custom-file-label file-upload" for="customFile">Choose
+                                    <input type="file" class="custom-file custom-file-input" onchange="readURL(this)"
+                                           name="userImage"
+                                           id="userImage" required>
+                                    <label class="custom-file-label file-upload" for="userImage">Choose
                                         photo</label>
+                                    <img id="blah" class="float-right">
                                 </div>
                             </div>
                             <br>
                             <div class="form-group row float-right no-gutters">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </form>
                     </div>
@@ -196,24 +229,25 @@
                     <div class="card-header">Change Password
                     </div>
                     <div class="card-body text-dark">
-                        <form>
+                        <form method="post" action="/changePasswordFromProfile">
                             <div class="form-group row">
-                                <label for="inputPassword3" class="col-md-5 col-form-label">Password</label>
+                                <label for="password" class="col-md-5 col-form-label">Password</label>
                                 <div class="col-md-7">
-                                    <input type="password" class="form-control" id=""
-                                           placeholder="Password">
+                                    <input type="password" class="form-control" id="password" name="password"
+                                           placeholder="Password" required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputPassword3" class="col-md-5 col-form-label">Confirm Password</label>
+                                <label for="confirmPassword" class="col-md-5 col-form-label">Confirm Password</label>
                                 <div class="col-md-7">
-                                    <input type="password" class="form-control" id=""
-                                           placeholder="Confirm Password">
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                           name="confirmPassword"
+                                           placeholder="Confirm Password" required>
                                 </div>
                             </div>
                             <div class="form-group row float-right no-gutters">
                                 <div class="">
-                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Change&nbspPassword</button>
                                 </div>
                             </div>
                         </form>
@@ -225,4 +259,10 @@
     </div>
 </div>
 </body>
+<script>
+    $(document).ready(function () {
+        $("#sucessRegister").fadeOut(6000);
+        $("#errordisplay").fadeOut(6000);
+    });
+</script>
 </html>

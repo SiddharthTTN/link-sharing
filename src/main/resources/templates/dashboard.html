@@ -138,16 +138,17 @@
                         <h5 class="modal-title">Share Document: </h5>
                     </div>
                     <div class="modal-body">
-                        <form id="shareDocForm" method="post">
+                        <form id="shareDocForm" method="post" action="/createDocumentResource" enctype="multipart/form-data">
                             <p><label>Document: </label><div class="pad-div" style="border: lightgray 1px solid;border-radius: 4px">
-                                <input type="file" id="document" required></div></p>
+                                <input type="file" id="document" name="document" required></div></p>
+
                             <br>
                             <p><label>Description : </label>
-                                <textarea class="form-control" required></textarea>
+                                <textarea class="form-control" name="description" required></textarea>
                             </p>
                             <p><label>Topic : </label>
-                                <select class="custom-select col-md-5 float-right">
-                                    <option th:each="subscibedTopics : ${subscibedTopics}" th:text="${subscibedTopics.name}"></option>
+                                <select class="custom-select float-right col-md-5" name="topicId">
+                                    <option th:each="subscribedTopics : ${subscibedTopics}" th:text="${subscribedTopics.name}" th:value="${subscribedTopics.id}"></option>
                                 </select>
                             </p>
                             <div class="modal-footer">
@@ -172,16 +173,16 @@
                         <h5 class="modal-title">Share Link: </h5>
                     </div>
                     <div class="modal-body">
-                        <form id="shareLinkForm" method="post">
+                        <form id="shareLinkForm" method="post" action="/createLinkResource">
                             <p><label>Link: </label>
-                                <input type="text" class="form-control" placeholder="Enter Link" required></p>
+                                <input type="text" class="form-control" placeholder="Enter Link" name="link" required></p>
                             <br>
                             <p><label>Description : </label>
-                                <textarea class="form-control" required></textarea>
+                                <textarea class="form-control" name="description" required></textarea>
                             </p>
                             <p><label>Topic : </label>
-                                <select class="custom-select float-right col-md-5">
-                                    <option th:each="subscibedTopics : ${subscibedTopics}" th:text="${subscibedTopics.name}"></option>
+                                <select class="custom-select float-right col-md-5" name="topicId">
+                                    <option th:each="subscribedTopics : ${subscibedTopics}" th:text="${subscribedTopics.name}" th:value="${subscribedTopics.id}"></option>
                                 </select>
                             </p>
                             <div class="modal-footer">

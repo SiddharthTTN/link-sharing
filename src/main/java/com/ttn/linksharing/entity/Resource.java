@@ -21,6 +21,9 @@ public class Resource {
     @ManyToOne
     private Topic topic;
 
+    @Column(columnDefinition = "text")
+    private String description;
+
     @OneToMany(mappedBy = "resource")
     private List<ResourceRating> resourceRatings = new ArrayList<>();
 }

@@ -1,11 +1,10 @@
 package com.ttn.linksharing.controller;
 
+import com.ttn.linksharing.entity.DocumentResource;
 import com.ttn.linksharing.entity.Subscription;
 import com.ttn.linksharing.entity.Topic;
 import com.ttn.linksharing.entity.User;
-import com.ttn.linksharing.service.SubscriptionService;
-import com.ttn.linksharing.service.TopicService;
-import com.ttn.linksharing.service.UserService;
+import com.ttn.linksharing.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -15,6 +14,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.internet.MimeMessage;
@@ -40,11 +40,16 @@ public class MainController {
     @Autowired
     private JavaMailSender sender;
 
+    @Autowired
+    DocumentResourceService documentResourceService;
+
+    @Autowired
+    LinkResourceService linkResourceService;
+
     private Boolean status = false;
     private Boolean register = false;
     private Boolean errorlogin = false;
 
-    private String selectedTopic;
 
     @GetMapping("/home")
     public String homePage(Model model) {
@@ -159,7 +164,6 @@ public class MainController {
         model.addAttribute("subscibedTopics", subscriptionService.getSubscribedTopics((User) httpSession.getAttribute("user")));
         model.addAttribute("register", register);
         model.addAttribute("errorlogin", errorlogin);
-        model.addAttribute("selectedTopic", selectedTopic);
         register = false;
         errorlogin = false;
         return "dashboard";
@@ -365,5 +369,49 @@ public class MainController {
         return "redirect:/dashboard";
     }
 
-    
+    @PostMapping("/createLinkResource")
+    public String createLinkResource(HttpSession httpSession, RedirectAttributes redirectAttributes, String link, String description, Integer topicId) {
+
+        if (link.isEmpty() || description.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Please Fill in all the fields");
+            errorlogin = true;
+            return "redirect:/dashboard";
+        } else if (description.length() < 100) {
+            redirectAttributes.addFlashAttribute("message", "Description should be of minimum 100 characters");
+            errorlogin = true;
+            return "redirect:/dashboard";
+        } else {
+            linkResourceService.addResource((User) httpSession.getAttribute("user"), topicService.getTopicById(topicId), link, description);
+            redirectAttributes.addFlashAttribute("message", "Your Link resource have been added successfully");
+            register = true;
+            return "redirect:/dashboard";
+        }
+    }
+
+    @PostMapping("/createDocumentResource")
+    public String createDocumentResource(RedirectAttributes redirectAttributes, HttpSession httpSession, String description, MultipartFile document, Integer topicId) {
+        if (description.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Please Fill in all the fields");
+            errorlogin = true;
+            return "redirect:/dashboard";
+        } else if (document.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Please upload a document");
+            errorlogin = true;
+            return "redirect:/dashboard";
+        } else if (description.length() < 100) {
+            redirectAttributes.addFlashAttribute("message", "Description should be of minimum 100 characters");
+            errorlogin = true;
+            return "redirect:/dashboard";
+        } else {
+            DocumentResource documentResource = new DocumentResource();
+            documentResource.setDocumentResource(document);
+            documentResource.setUser((User) httpSession.getAttribute("user"));
+            documentResource.setDescription(description);
+            documentResource.setTopic(topicService.getTopicById(topicId));
+            documentResourceService.shareDocument(documentResource);
+            redirectAttributes.addFlashAttribute("message", "Document resource have been shared successfully");
+            register = true;
+            return "redirect:/dashboard";
+        }
+    }
 }

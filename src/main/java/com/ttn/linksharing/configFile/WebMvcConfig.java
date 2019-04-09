@@ -14,10 +14,13 @@ import java.util.List;
 public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        List<String> included = new ArrayList<>();
-        included.add("/profile");
-        included.add("/dashboard");
+        List<String> excluded = new ArrayList<>();
+        excluded.add("/home");
+        excluded.add("/reset");
+        excluded.add("/register");
+        excluded.add("/checkerror");
+        excluded.add("/login");
         registry.addInterceptor(new CheckInterceptor())
-        .addPathPatterns(included);
+        .excludePathPatterns(excluded);
     }
 }

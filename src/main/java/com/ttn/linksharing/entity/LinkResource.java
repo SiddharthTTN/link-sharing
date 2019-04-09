@@ -2,13 +2,11 @@ package com.ttn.linksharing.entity;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
+@DiscriminatorValue("Link")
 public class LinkResource extends Resource {
 
     @Id

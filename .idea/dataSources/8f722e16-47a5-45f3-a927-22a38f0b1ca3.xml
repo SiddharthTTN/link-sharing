@@ -1023,230 +1023,235 @@ resource_id</ColNames>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="257" parent="236" name="FKqq6ugm1195ox83gdruyxxrseq">
+    <column id="257" parent="236" name="description">
+      <Position>7</Position>
+      <DataType>text|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="258" parent="236" name="FKqq6ugm1195ox83gdruyxxrseq">
       <ColNames>topic_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="258" parent="236" name="FKgverld5ylkmwkhca8tcjwggps">
+    <index id="259" parent="236" name="FKgverld5ylkmwkhca8tcjwggps">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="259" parent="236" name="PRIMARY">
+    <key id="260" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="260" parent="236" name="FKqq6ugm1195ox83gdruyxxrseq">
+    <foreign-key id="261" parent="236" name="FKqq6ugm1195ox83gdruyxxrseq">
       <ColNames>topic_id</ColNames>
       <RefSchemaName>linksharing</RefSchemaName>
       <RefTableName>topic</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="261" parent="236" name="FKgverld5ylkmwkhca8tcjwggps">
+    <foreign-key id="262" parent="236" name="FKgverld5ylkmwkhca8tcjwggps">
       <ColNames>user_id</ColNames>
       <RefSchemaName>linksharing</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="262" parent="237" name="id">
+    <column id="263" parent="237" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="237" name="rating">
+    <column id="264" parent="237" name="rating">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="237" name="resource_id">
+    <column id="265" parent="237" name="resource_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="237" name="user_id">
+    <column id="266" parent="237" name="user_id">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="266" parent="237" name="UK1trfxp2qwftp06yg2kdrouuet">
+    <index id="267" parent="237" name="UK1trfxp2qwftp06yg2kdrouuet">
       <ColNames>user_id
 resource_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="267" parent="237" name="FKdabnpno1bssc35usck4ch1ye6">
+    <index id="268" parent="237" name="FKdabnpno1bssc35usck4ch1ye6">
       <ColNames>resource_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="268" parent="237" name="PRIMARY">
+    <key id="269" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="269" parent="237" name="UK1trfxp2qwftp06yg2kdrouuet">
+    <key id="270" parent="237" name="UK1trfxp2qwftp06yg2kdrouuet">
       <ColNames>user_id
 resource_id</ColNames>
       <UnderlyingIndexName>UK1trfxp2qwftp06yg2kdrouuet</UnderlyingIndexName>
     </key>
-    <foreign-key id="270" parent="237" name="FKdabnpno1bssc35usck4ch1ye6">
+    <foreign-key id="271" parent="237" name="FKdabnpno1bssc35usck4ch1ye6">
       <ColNames>resource_id</ColNames>
       <RefSchemaName>linksharing</RefSchemaName>
       <RefTableName>resource</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="271" parent="237" name="FKolfytokdr3jp7k1aipiyscltn">
+    <foreign-key id="272" parent="237" name="FKolfytokdr3jp7k1aipiyscltn">
       <ColNames>user_id</ColNames>
       <RefSchemaName>linksharing</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="272" parent="238" name="id">
+    <column id="273" parent="238" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="273" parent="238" name="seriousness">
+    <column id="274" parent="238" name="seriousness">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="274" parent="238" name="topic_id">
+    <column id="275" parent="238" name="topic_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="275" parent="238" name="user_id">
+    <column id="276" parent="238" name="user_id">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="276" parent="238" name="UKa4wvdf63vrj2jqvmdanenmgr7">
+    <index id="277" parent="238" name="UKa4wvdf63vrj2jqvmdanenmgr7">
       <ColNames>user_id
 topic_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="277" parent="238" name="FKfngoe6nfwk0cytmqu20y3bwyd">
+    <index id="278" parent="238" name="FKfngoe6nfwk0cytmqu20y3bwyd">
       <ColNames>topic_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="278" parent="238" name="PRIMARY">
+    <key id="279" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="279" parent="238" name="UKa4wvdf63vrj2jqvmdanenmgr7">
+    <key id="280" parent="238" name="UKa4wvdf63vrj2jqvmdanenmgr7">
       <ColNames>user_id
 topic_id</ColNames>
       <UnderlyingIndexName>UKa4wvdf63vrj2jqvmdanenmgr7</UnderlyingIndexName>
     </key>
-    <foreign-key id="280" parent="238" name="FKfngoe6nfwk0cytmqu20y3bwyd">
+    <foreign-key id="281" parent="238" name="FKfngoe6nfwk0cytmqu20y3bwyd">
       <ColNames>topic_id</ColNames>
       <RefSchemaName>linksharing</RefSchemaName>
       <RefTableName>topic</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="281" parent="238" name="FK8l1goo02px4ye49xd7wgogxg6">
+    <foreign-key id="282" parent="238" name="FK8l1goo02px4ye49xd7wgogxg6">
       <ColNames>user_id</ColNames>
       <RefSchemaName>linksharing</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="282" parent="239" name="id">
+    <column id="283" parent="239" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="283" parent="239" name="name">
+    <column id="284" parent="239" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="284" parent="239" name="visibility">
+    <column id="285" parent="239" name="visibility">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="285" parent="239" name="user_id">
+    <column id="286" parent="239" name="user_id">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="286" parent="239" name="UKl2hwl1augmdyrkc29cqc9pj96">
+    <index id="287" parent="239" name="UKl2hwl1augmdyrkc29cqc9pj96">
       <ColNames>name
 user_id</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="287" parent="239" name="FK38wu074adxipuj6a9ifd7jv5f">
+    <index id="288" parent="239" name="FK38wu074adxipuj6a9ifd7jv5f">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="288" parent="239" name="PRIMARY">
+    <key id="289" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="289" parent="239" name="UKl2hwl1augmdyrkc29cqc9pj96">
+    <key id="290" parent="239" name="UKl2hwl1augmdyrkc29cqc9pj96">
       <ColNames>name
 user_id</ColNames>
       <UnderlyingIndexName>UKl2hwl1augmdyrkc29cqc9pj96</UnderlyingIndexName>
     </key>
-    <foreign-key id="290" parent="239" name="FK38wu074adxipuj6a9ifd7jv5f">
+    <foreign-key id="291" parent="239" name="FK38wu074adxipuj6a9ifd7jv5f">
       <ColNames>user_id</ColNames>
       <RefSchemaName>linksharing</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="291" parent="240" name="id">
+    <column id="292" parent="240" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="292" parent="240" name="email">
+    <column id="293" parent="240" name="email">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="293" parent="240" name="first_name">
+    <column id="294" parent="240" name="first_name">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="240" name="image_path">
+    <column id="295" parent="240" name="image_path">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="295" parent="240" name="is_admin">
+    <column id="296" parent="240" name="is_admin">
       <Position>5</Position>
       <DataType>bit(1)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="296" parent="240" name="last_name">
+    <column id="297" parent="240" name="last_name">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="297" parent="240" name="password">
+    <column id="298" parent="240" name="password">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="298" parent="240" name="username">
+    <column id="299" parent="240" name="username">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="299" parent="240" name="PRIMARY">
+    <key id="300" parent="240" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>

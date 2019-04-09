@@ -33,5 +33,5 @@ public class User {
     @Transient
     MultipartFile userImage;
 
-    private Boolean isAdmin;
+    private Boolean isAdmin=false;
 }

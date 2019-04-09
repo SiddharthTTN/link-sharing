@@ -29,7 +29,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
-// implementation 'net.sourceforge.nekohtml:nekohtml'
+    compile 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'net.sourceforge.nekohtml:nekohtml'
     runtimeOnly 'mysql:mysql-connector-java'
 }
 

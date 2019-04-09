@@ -2,6 +2,7 @@
 <html xmlns:th="www.thymleaf.org">
 <head>
     <title>Dashboard</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/favicon.png}"/>
 
     <link rel="stylesheet" th:href="@{bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{home.css}"/>
@@ -30,6 +31,16 @@
         <!--Search Bar-->
 
         <div class="col-md-4">
+            <div th:if="${register}" id="sucessRegister" style="z-index: 2;position: absolute">
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <span th:text="${message}" data-dismiss="alert"></span>
+                </div>
+            </div>
+            <div th:if="${errorlogin}" id="errordisplay" style="z-index: 2;position: absolute">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <span th:text="${message}" data-dismiss="alert"></span>
+                </div>
+            </div>
             <div class="input-group">
                 <div class="input-group-prepend bg-white">
                     <span class="input-group-text border-right-0 rounded-right bg-white"><i
@@ -66,14 +77,13 @@
                         <h5 class="modal-title">Create Topic: </h5>
                     </div>
                     <div class="modal-body">
-                        <form id="createTopicForm" method="post">
+                        <form id="createTopicForm" method="post" th:action="@{/createTopic}" th:object="${topic}">
                             <p><label>Name: </label>
-                                <input type="text" class="form-control" placeholder="Name" required></p><br>
+                                <input type="text" class="form-control" placeholder="Name" name="name" required></p><br>
                             <p><label>Visibility: </label>
-                                <select class="custom-select float-right col-md-6">
-                                    <Option>Public</Option>
-                                    <Option>Only Friends</Option>
-                                    <Option>Only Me</Option>
+                                <select class="custom-select float-right col-md-6" name="visibility">
+                                    <Option  th:each="visibility : ${T(com.ttn.linksharing.enums.Visibility).values()}"
+                                             th:value="${visibility}" th:text="${visibility.getValue()}"></Option>
                                 </select>
                             </p>
                             <div class="modal-footer">
@@ -98,14 +108,12 @@
                         <h5 class="modal-title">Send Invitation: </h5>
                     </div>
                     <div class="modal-body">
-                        <form id="sendInviteForm" method="post">
+                        <form id="sendInviteForm" method="post" action="/sendInvite">
                             <p><label>Email: </label>
-                                <input type="email" class="form-control" placeholder="Email" required></p><br>
+                                <input type="email" class="form-control" placeholder="Email" name="email" required></p><br>
                             <p><label>Topic : </label>
-                                <select class="custom-select col-md-7">
-                                    <Option>Public</Option>
-                                    <Option>Only Friends</Option>
-                                    <Option>Only Me</Option>
+                                <select class="custom-select col-md-7" name="selectedTopic">
+                                    <option th:each="subscribedTopics : ${subscibedTopics}" th:text="${subscribedTopics.name}" th:value="${subscribedTopics.id}"></option>
                                 </select>
                             </p>
                             <div class="modal-footer">
@@ -139,9 +147,7 @@
                             </p>
                             <p><label>Topic : </label>
                                 <select class="custom-select col-md-5 float-right">
-                                    <Option>Public</Option>
-                                    <Option>Only Friends</Option>
-                                    <Option>Only Me</Option>
+                                    <option th:each="subscibedTopics : ${subscibedTopics}" th:text="${subscibedTopics.name}"></option>
                                 </select>
                             </p>
                             <div class="modal-footer">
@@ -175,9 +181,7 @@
                             </p>
                             <p><label>Topic : </label>
                                 <select class="custom-select float-right col-md-5">
-                                    <Option>Public</Option>
-                                    <Option>Only Friends</Option>
-                                    <Option>Only Me</Option>
+                                    <option th:each="subscibedTopics : ${subscibedTopics}" th:text="${subscibedTopics.name}"></option>
                                 </select>
                             </p>
                             <div class="modal-footer">
@@ -222,9 +226,8 @@
 
             <div class="row card mb-3">
                 <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg" class="card-img"
-                             alt="...">
+                    <div class="col-md-4 pad-div">
+                        <img th:src="@{/image/} + ${user.imagePath}" class="card-img">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -237,8 +240,8 @@
                                     <th>Topics</th>
                                 </tr>
                                 <tr>
-                                    <td>50</td>
-                                    <td>30</td>
+                                    <td th:text="${subscriptionCount}"></td>
+                                    <td th:text="${topicCount}"></td>
                                 </tr>
                             </table>
                             </p>
@@ -498,4 +501,10 @@
 
 </div>
 </body>
+<script>
+    $(document).ready(function(){
+        $("#sucessRegister").fadeOut(6000);
+        $("#errordisplay").fadeOut(6000);
+    });
+</script>
 </html>

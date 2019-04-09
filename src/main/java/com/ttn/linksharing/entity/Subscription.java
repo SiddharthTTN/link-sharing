@@ -20,6 +20,7 @@ public class Subscription {
     @OneToOne
     Topic topic;
 
-    private Seriousness seriousness;
+    @Enumerated(EnumType.STRING)
+    private Seriousness seriousness = Seriousness.VERY_SERIOUS;
 
 }

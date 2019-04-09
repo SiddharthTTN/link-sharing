@@ -15,5 +15,5 @@ public class LinkResource extends Resource {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    String url;
+    private String url;
 }

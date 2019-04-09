@@ -19,6 +19,7 @@ public class Topic {
     @OneToOne
     private User user;
 
+    @Enumerated(EnumType.STRING)
     private Visibility visibility;
 
     @OneToMany(mappedBy = "topic")

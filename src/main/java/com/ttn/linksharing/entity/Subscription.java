@@ -1,7 +1,9 @@
 package com.ttn.linksharing.entity;
 
 import com.ttn.linksharing.enums.Seriousness;
+import com.ttn.linksharing.service.SubscriptionService;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
@@ -22,5 +24,10 @@ public class Subscription {
 
     @Enumerated(EnumType.STRING)
     private Seriousness seriousness = Seriousness.VERY_SERIOUS;
+
+    @Autowired
+    @Transient
+    SubscriptionService subscriptionService;
+
 
 }

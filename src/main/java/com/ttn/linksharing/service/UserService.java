@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -75,6 +76,9 @@ public class UserService {
 
     //To Throw Error message
     public User checkError(String username){return  userRepository.findByUsername(username);}
+
+    //Get all Users
+    public List<User> getNonAdminUsers(){return userRepository.findByIsAdminFalse();}
 
 
 }

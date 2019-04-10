@@ -34,4 +34,6 @@ public class User {
     MultipartFile userImage;
 
     private Boolean isAdmin=false;
+
+    private Boolean isActive=true;
 }

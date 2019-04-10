@@ -30,5 +30,12 @@ public class SubscriptionService {
     public Subscription confirmSubscription(User user, Topic topic) {
         return subscriptionRepository.findByUserAndTopic(user, topic);
     }
+
+    public List<Subscription> getSubscriptions(User user){return subscriptionRepository.findByUser(user);}
+
+    public Integer getSubscriptionCount(Topic topic){return subscriptionRepository.countByTopic(topic);}
+
+    public List<Subscription> getSubscriptions(Topic topic){return subscriptionRepository.findByTopic(topic);}
+
 }
 

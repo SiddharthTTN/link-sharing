@@ -48,4 +48,8 @@ public class TopicService {
     public Topic getTopicById(Integer id) {
         return topicRepository.findById(id).get();
     }
+
+    public List<Topic> getTopicByUser(User user) {
+        return topicRepository.findByUser(user);
+    }
 }

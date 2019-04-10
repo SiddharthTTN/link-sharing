@@ -4,10 +4,10 @@
     <title>Dashboard</title>
     <link rel="shortcut icon" type="image/png" th:href="@{/favicon.png}"/>
 
-    <link rel="stylesheet" th:href="@{bootstrap.min.css}"/>
-    <link rel="stylesheet" th:href="@{home.css}"/>
-    <link rel="stylesheet" th:href="@{adminTable.css}"/>
-    <link rel="stylesheet" th:href="@{dashboard.css}"/>
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/home.css}"/>
+    <link rel="stylesheet" th:href="@{/adminTable.css}"/>
+    <link rel="stylesheet" th:href="@{/dashboard.css}"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
 
@@ -15,9 +15,9 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
 
-    <script th:src="@{jquery.min.js}"></script>
-    <script th:src="@{bootstrap.min.js}"></script>
-    <script th:src="@{imageDisplay.js}"></script>
+    <script th:src="@{/jquery.min.js}"></script>
+    <script th:src="@{/bootstrap.min.js}"></script>
+    <script th:src="@{/imageDisplay.js}"></script>
 
 </head>
 <body>
@@ -25,7 +25,7 @@
 <div class="container">
     <div class="row mainRow">
         <div class="col-md-4">
-            <a href="" class="link"><h3>Link Sharing</h3></a>
+            <a href="/dashboard" class="link"><h3>Link Sharing</h3></a>
         </div>
 
         <!--Search Bar-->
@@ -82,8 +82,8 @@
                                 <input type="text" class="form-control" placeholder="Name" name="name" required></p><br>
                             <p><label>Visibility: </label>
                                 <select class="custom-select float-right col-md-6" name="visibility">
-                                    <Option  th:each="visibility : ${T(com.ttn.linksharing.enums.Visibility).values()}"
-                                             th:value="${visibility}" th:text="${visibility.getValue()}"></Option>
+                                    <Option th:each="visibility : ${T(com.ttn.linksharing.enums.Visibility).values()}"
+                                            th:value="${visibility}" th:text="${visibility.getValue()}"></Option>
                                 </select>
                             </p>
                             <div class="modal-footer">
@@ -110,10 +110,13 @@
                     <div class="modal-body">
                         <form id="sendInviteForm" method="post" action="/sendInvite">
                             <p><label>Email: </label>
-                                <input type="email" class="form-control" placeholder="Email" name="email" required></p><br>
+                                <input type="email" class="form-control" placeholder="Email" name="email" required></p>
+                            <br>
                             <p><label>Topic : </label>
                                 <select class="custom-select col-md-7" name="selectedTopic">
-                                    <option th:each="subscribedTopics : ${subscibedTopics}" th:text="${subscribedTopics.name}" th:value="${subscribedTopics.id}"></option>
+                                    <option th:each="subscribedTopics : ${subscibedTopics}"
+                                            th:text="${subscribedTopics.name}"
+                                            th:value="${subscribedTopics.id}"></option>
                                 </select>
                             </p>
                             <div class="modal-footer">
@@ -138,9 +141,12 @@
                         <h5 class="modal-title">Share Document: </h5>
                     </div>
                     <div class="modal-body">
-                        <form id="shareDocForm" method="post" action="/createDocumentResource" enctype="multipart/form-data">
-                            <p><label>Document: </label><div class="pad-div" style="border: lightgray 1px solid;border-radius: 4px">
-                                <input type="file" id="document" name="document" required></div></p>
+                        <form id="shareDocForm" method="post" action="/createDocumentResource"
+                              enctype="multipart/form-data">
+                            <p><label>Document: </label>
+                            <div class="pad-div" style="border: lightgray 1px solid;border-radius: 4px">
+                                <input type="file" id="document" name="document" required></div>
+                            </p>
 
                             <br>
                             <p><label>Description : </label>
@@ -148,7 +154,9 @@
                             </p>
                             <p><label>Topic : </label>
                                 <select class="custom-select float-right col-md-5" name="topicId">
-                                    <option th:each="subscribedTopics : ${subscibedTopics}" th:text="${subscribedTopics.name}" th:value="${subscribedTopics.id}"></option>
+                                    <option th:each="subscribedTopics : ${subscibedTopics}"
+                                            th:text="${subscribedTopics.name}"
+                                            th:value="${subscribedTopics.id}"></option>
                                 </select>
                             </p>
                             <div class="modal-footer">
@@ -175,14 +183,17 @@
                     <div class="modal-body">
                         <form id="shareLinkForm" method="post" action="/createLinkResource">
                             <p><label>Link: </label>
-                                <input type="text" class="form-control" placeholder="Enter Link" name="link" required></p>
+                                <input type="text" class="form-control" placeholder="Enter Link" name="link" required>
+                            </p>
                             <br>
                             <p><label>Description : </label>
                                 <textarea class="form-control" name="description" required></textarea>
                             </p>
                             <p><label>Topic : </label>
                                 <select class="custom-select float-right col-md-5" name="topicId">
-                                    <option th:each="subscribedTopics : ${subscibedTopics}" th:text="${subscribedTopics.name}" th:value="${subscribedTopics.id}"></option>
+                                    <option th:each="subscribedTopics : ${subscibedTopics}"
+                                            th:text="${subscribedTopics.name}"
+                                            th:value="${subscribedTopics.id}"></option>
                                 </select>
                             </p>
                             <div class="modal-footer">
@@ -203,11 +214,12 @@
             <div class="nav navbar float-right">
                 <li class="dropdown"><i class="fas fa-user"> &nbsp &nbsp </i><a class="dropdown-toggle"
                                                                                 data-toggle="dropdown"
-                                                                                href="#" th:text="*{user.firstName}"><span
+                                                                                href="#"
+                                                                                th:text="*{user.firstName}"><span
                         class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-pad-left">
                         <li><a th:href="@{/profile}"> Profile</a></li>
-                        <li><a href="#"> Users</a></li>
+                        <li><a href="/users"> Users</a></li>
                         <li><a href="#"> Topic</a></li>
                         <li><a href="#"> Posts</a></li>
                         <li><a th:href="@{/logout}"> Logout</a></li>
@@ -255,44 +267,43 @@
 
             <div class="row">
                 <div class="card border-dark mb-3">
-                    <div class="card-header">Subscriptions<span class="float-right"><a class="link"
-                                                                                       href="#">View All</a> </span>
+                    <div class="card-header">Subscriptions:
                     </div>
                     <div class="card-body text-dark">
-                        <div class="card mb-3">
+                        <div class="card mb-3" th:each="ownSubscription:${ownSubscription}">
                             <div class="row no-gutters">
                                 <div class="col-md-3">
-                                    <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg"
-                                         class="card-img" alt="...">
+                                    <img th:src="@{/image/} + ${ownSubscription.user.imagePath}"
+                                         class="card-img">
                                 </div>
                                 <div class="col-md-9">
                                     <div class="card-body">
-                                        <h5 class="card-title"><a>Grails</a></h5>
+                                        <h5 class="card-title"><a class="link" th:href="@{'/topic/'+ ${ownSubscription.topic.id}}" th:text="${ownSubscription.topic.name}"></a></h5>
                                         <p class="card-text">
                                         <table class="w-100 font-size-15" cellspacing="14px">
                                             <tr>
-                                                <td>@uday</td>
-                                                <td>Subscriptions</td>
-                                                <td>Posts</td>
+                                                <td th:text="'@' + ${ownSubscription.user.username}"></td>
+                                                <th>Subscriptions</th>
+                                                <th>Posts</th>
                                             </tr>
                                             <tr>
                                                 <td><a href="#">Unsubscribe</a></td>
-                                                <td>50</td>
-                                                <td>30</td>
+                                                <td th:text="${@subscriptionService.getSubscriptionCount(ownSubscription.topic)}"></td>
+                                                <td th:text="${@resourceService.getResourceCount(ownSubscription.topic)}"></td>
                                             </tr>
                                         </table>
                                         </p>
                                         <p class="card-text">
                                             <small class="text-muted">
-                                                <select class="col-md-4">
-                                                    <option>Serious</option>
-                                                    <option></option>
-                                                    <option></option>
+                                                <select class="col-md-4" name="seriousness">
+                                                    <Option th:each="seriousness : ${T(com.ttn.linksharing.enums.Seriousness).values()}"
+                                                            th:value="${seriousness}"
+                                                            th:text="${seriousness.getValue()}"></Option>
                                                 </select>&nbsp
-                                                <select class="col-md-4">
-                                                    <option>Private</option>
-                                                    <option></option>
-                                                    <option></option>
+                                                <select class="col-md-4" name="visibility">
+                                                    <Option th:each="visibility : ${T(com.ttn.linksharing.enums.Visibility).values()}"
+                                                            th:value="${visibility}"
+                                                            th:text="${visibility.getValue()}"></Option>
                                                 </select>&nbsp &nbsp &nbsp
                                                 <a href="#"><i class="far fa-envelope">&nbsp &nbsp</i></a><a href="#"><i
                                                     class="far fa-edit"></i></a>&nbsp &nbsp<a href="#"><i
@@ -302,35 +313,35 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card mb-3">
+                        <div class="card mb-3" th:each="otherSubscription:${otherSubscription}">
                             <div class="row no-gutters">
                                 <div class="col-md-3">
-                                    <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg"
-                                         class="card-img" alt="...">
+                                    <img th:src="@{/image/} + ${otherSubscription.topic.user.imagePath}"
+                                         class="card-img">
                                 </div>
                                 <div class="col-md-9">
                                     <div class="card-body">
-                                        <h5 class="card-title"><a>Grails</a></h5>
+                                        <h5 class="card-title"><a th:text="${otherSubscription.topic.name}"></a></h5>
                                         <p class="card-text">
                                         <table class="w-100 font-size-15" cellspacing="14px">
                                             <tr>
-                                                <td>@uday</td>
-                                                <td>Subscriptions</td>
-                                                <td>Posts</td>
+                                                <td th:text="'@' + ${otherSubscription.topic.user.username}"></td>
+                                                <th>Subscriptions</th>
+                                                <th>Posts</th>
                                             </tr>
                                             <tr>
                                                 <td><a href="#">Unsubscribe</a></td>
-                                                <td>50</td>
-                                                <td>30</td>
+                                                <td th:text="${@subscriptionService.getSubscriptionCount(otherSubscription.topic)}"></td>
+                                                <td th:text="${@resourceService.getResourceCount(otherSubscription.topic)}"></td>
                                             </tr>
                                         </table>
                                         </p>
                                         <p class="card-text" align="right">
                                             <small class="text-muted">
                                                 <select class="col-md-4">
-                                                    <option>Serious</option>
-                                                    <option></option>
-                                                    <option></option>
+                                                    <Option th:each="seriousness : ${T(com.ttn.linksharing.enums.Seriousness).values()}"
+                                                            th:value="${seriousness}"
+                                                            th:text="${seriousness.getValue()}"></Option>
                                                 </select>&nbsp &nbsp &nbsp
                                                 <a href="#"><i class="far fa-envelope">&nbsp &nbsp</i></a></small>
                                         </p>
@@ -351,70 +362,28 @@
                         <div>Trending Topic</div>
                     </div>
                     <div class="card-body text-dark">
-                        <div class="card mb-3">
+                        <div class="card mb-3" th:each="trendingTopic:${trendingTopics}">
                             <div class="row no-gutters">
                                 <div class="col-md-3">
-                                    <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg"
-                                         class="card-img" alt="...">
+                                    <img th:src="@{/image/} + ${trendingTopic.user.imagePath}"
+                                         class="card-img">
                                 </div>
                                 <div class="col-md-9">
                                     <div class="card-body">
-                                        <h5 class="card-title"><a>Grails</a></h5>
+                                        <h5 class="card-title"><a class="link" th:href="@{'/topic/'+ ${trendingTopic.id}}" th:text="*{trendingTopic.name}"></a></h5>
                                         <p class="card-text">
                                         <table class="w-100 font-size-15" cellspacing="14px">
                                             <tr>
-                                                <td>@uday</td>
-                                                <td>Subscriptions</td>
-                                                <td>Posts</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Subscribe</a></td>
-                                                <td>50</td>
-                                                <td>30</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="row no-gutters">
-                                <div class="col-md-3">
-                                    <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg"
-                                         class="card-img" alt="...">
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a>Grails</a></h5>
-                                        <p class="card-text">
-                                        <table class="w-100 font-size-15" cellspacing="14px">
-                                            <tr>
-                                                <td>@uday</td>
-                                                <td>Subscriptions</td>
-                                                <td>Posts</td>
+                                                <td th:text="'@' + *{trendingTopic.user.username}"></td>
+                                                <th>Subscriptions</th>
+                                                <th>Posts</th>
                                             </tr>
                                             <tr>
                                                 <td><a href="#">Unsubscribe</a></td>
-                                                <td>50</td>
-                                                <td>30</td>
+                                                <td th:text="${@subscriptionService.getSubscriptionCount(trendingTopic)}"></td>
+                                                <td th:text="${@resourceService.getResourceCount(trendingTopic)}"></td>
                                             </tr>
                                         </table>
-                                        </p>
-                                        <p class="card-text">
-                                            <small class="text-muted">
-                                                <select class="col-md-4">
-                                                    <option>Serious</option>
-                                                    <option></option>
-                                                    <option></option>
-                                                </select>&nbsp
-                                                <select class="col-md-4">
-                                                    <option>Private</option>
-                                                    <option></option>
-                                                    <option></option>
-                                                </select>&nbsp &nbsp &nbsp
-                                                <a href="#"><i class="far fa-envelope">&nbsp &nbsp</i></a><a href="#"><i
-                                                    class="far fa-edit"></i></a>&nbsp &nbsp<a href="#"><i
-                                                    class="fas fa-trash-alt"></i></a></small>
                                         </p>
                                     </div>
                                 </div>
@@ -435,59 +404,33 @@
                     <div class="card-header">Inbox
                     </div>
                     <div class="card-body text-dark">
-                        <div class="card mb-3">
+                        <div class="card mb-3" th:each="subscribedResource:${subscribedResources}">
                             <div class="row no-gutters">
                                 <div class="col-md-3">
-                                    <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg"
+                                    <img th:src="@{/image/} + ${subscribedResource.user.imagePath}"
                                          class="card-img" alt="...">
                                 </div>
                                 <div class="col-md-9">
                                     <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a
-                                            natural lead-in to additional content. This content is a little bit
-                                            longer.</p>
-                                        <p class="card-text">
-                                            <small class="text-muted">
-                                                <i class="fab fa-facebook-f">&nbsp &nbsp</i><i
-                                                    class="fab fa-twitter"></i>&nbsp &nbsp<i
-                                                    class="fab fa-google-plus"></i></small>
-                                            <span class="font-size-11 float-right link"><a class="link"
-                                                                                           href="">Download</a>&nbsp&nbsp&nbsp<a
-                                                    class="link"
-                                                    href="">View Full Size</a>&nbsp&nbsp&nbsp<a class="link"
-                                                                                                href="">Mark as Read</a>&nbsp&nbsp&nbsp<a
-                                                    class="link"
-                                                    href="">View post</a></span>
+                                        <p class="card-title">
+                                        <span class="font-size-23"
+                                              th:text="${subscribedResource.user.firstName} + ' ' +${subscribedResource.user.lastName}"></span>
+                                            <span class="float-right font-size-15"><a th:href="@{'/topic/'+ ${subscribedResource.topic.id}}" class="link"
+                                                                                      th:text="${subscribedResource.topic.name}"></a></span>
                                         </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="row no-gutters">
-                                <div class="col-md-3">
-                                    <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg"
-                                         class="card-img" alt="...">
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a
-                                            natural lead-in to additional content. This content is a little bit
-                                            longer.</p>
+                                        <p class="card-text" th:text="${subscribedResource.description}"></p>
                                         <p class="card-text">
-                                            <small class="text-muted">
-                                                <i class="fab fa-facebook-f">&nbsp &nbsp</i><i
-                                                    class="fab fa-twitter"></i>&nbsp &nbsp<i
-                                                    class="fab fa-google-plus"></i></small>
+                                            <small class="text-muted"><a href="https://www.facebook.com" target="_blank">
+                                                <i class="fab fa-facebook-f">&nbsp &nbsp</i></a><a href="https://www.twitter.com" target="_blank"> <i
+                                                    class="fab fa-twitter"></i>&nbsp &nbsp</a><a href="https://aboutme.google.com" target="_blank"><i
+                                                    class="fab fa-google-plus"></i></a></small>
                                             <span class="font-size-11 float-right link"><a class="link"
                                                                                            href="">Download</a>&nbsp&nbsp&nbsp<a
                                                     class="link"
-                                                    href="">View Full Size</a>&nbsp&nbsp&nbsp<a class="link"
+                                                    href="">View Full Site</a>&nbsp&nbsp&nbsp<a class="link"
                                                                                                 href="">Mark as Read</a>&nbsp&nbsp&nbsp<a
                                                     class="link"
-                                                    href="">View post</a></span>
+                                                    th:href="@{'/resource/'+ ${subscribedResource.id}}">View post</a></span>
                                         </p>
                                     </div>
                                 </div>
@@ -503,7 +446,7 @@
 </div>
 </body>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function () {
         $("#sucessRegister").fadeOut(6000);
         $("#errordisplay").fadeOut(6000);
     });

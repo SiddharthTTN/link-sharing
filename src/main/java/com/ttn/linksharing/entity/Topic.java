@@ -1,7 +1,9 @@
 package com.ttn.linksharing.entity;
 
 import com.ttn.linksharing.enums.Visibility;
+import com.ttn.linksharing.service.SubscriptionService;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,6 +12,8 @@ import java.util.List;
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"name", "user_id"}))
 public class Topic {
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,5 +28,7 @@ public class Topic {
 
     @OneToMany(mappedBy = "topic")
     private List<Resource> resource;
+
+
 
 }

@@ -12,8 +12,15 @@ import java.util.List;
 public interface SubscriptionRepository extends CrudRepository<Subscription, Integer> {
     Integer countByUser(User user);
 
-    @Query("select t from Subscription s,Topic t where t.id = s.topic and s.user = :user")
+    @Query("select s.topic from Subscription s where s.user = :user")
     List<Topic> getSubscribedTopic(@Param("user") User user);
 
     Subscription findByUserAndTopic(User user, Topic topic);
+
+    List<Subscription> findByUser(User user);
+    List<Subscription> findByTopic(Topic topic);
+
+    Integer countByTopic(Topic topic);
+
+
 }

@@ -4,6 +4,7 @@ import com.ttn.linksharing.entity.DocumentResource;
 import com.ttn.linksharing.entity.Subscription;
 import com.ttn.linksharing.entity.Topic;
 import com.ttn.linksharing.entity.User;
+import com.ttn.linksharing.enums.Visibility;
 import com.ttn.linksharing.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -23,7 +24,9 @@ import javax.servlet.http.HttpSession;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Controller
 public class MainController {
@@ -36,6 +39,9 @@ public class MainController {
 
     @Autowired
     SubscriptionService subscriptionService;
+
+    @Autowired
+    ResourceService resourceService;
 
     @Autowired
     private JavaMailSender sender;
@@ -52,15 +58,28 @@ public class MainController {
 
 
     @GetMapping("/home")
-    public String homePage(Model model) {
-        model.addAttribute("user", new User());
-        model.addAttribute("status", status);
-        model.addAttribute("register", register);
-        model.addAttribute("errorlogin", errorlogin);
-        status = false;
-        register = false;
-        errorlogin = false;
-        return "home";
+    public String homePage(Model model, HttpSession httpSession) {
+        if (httpSession.getAttribute("user") != null)
+            return "redirect:/dashboard";
+        else {
+            model.addAttribute("user", new User());
+            model.addAttribute("status", status);
+            model.addAttribute("register", register);
+            model.addAttribute("errorlogin", errorlogin);
+            List<com.ttn.linksharing.entity.Resource> recentShares = resourceService.getRecentShares().stream()
+                    .filter(e -> e.getTopic().getVisibility() == Visibility.PUBLIC)
+                    .collect(Collectors.toList());
+            List<com.ttn.linksharing.entity.Resource> topPosts = resourceService.getRecentShares().stream()
+                    .filter(e -> e.getTopic().getVisibility() == Visibility.PUBLIC)
+                    .collect(Collectors.toList());
+
+            model.addAttribute("recentShares", recentShares);
+            model.addAttribute("topPosts", topPosts);
+            status = false;
+            register = false;
+            errorlogin = false;
+            return "home";
+        }
     }
 
     @GetMapping("/reset")
@@ -148,6 +167,10 @@ public class MainController {
                 redirectAttributes.addFlashAttribute("message", "Username or password does not exist");
                 errorlogin = true;
                 return "redirect:/home";
+            } else if (!user2.getIsActive()) {
+                redirectAttributes.addFlashAttribute("message", "Your account has been disabled. Please contact the admin.");
+                errorlogin = true;
+                return "redirect:/home";
             } else {
                 request.getSession().setAttribute("user", user2);
                 return "redirect:/dashboard";
@@ -164,6 +187,17 @@ public class MainController {
         model.addAttribute("subscibedTopics", subscriptionService.getSubscribedTopics((User) httpSession.getAttribute("user")));
         model.addAttribute("register", register);
         model.addAttribute("errorlogin", errorlogin);
+        List<Subscription> subscriptions = subscriptionService.getSubscriptions((User) httpSession.getAttribute("user"));
+        List<Subscription> ownSubscription = subscriptions.stream()
+                .filter(e -> e.getTopic().getUser().getId().equals(((User) httpSession.getAttribute("user")).getId()))
+                .collect(Collectors.toList());
+        List<Subscription> otherSubscription = subscriptions.stream().filter(e -> !e.getTopic().getUser().getId().equals(((User) httpSession.getAttribute("user")).getId())).collect(Collectors.toList());
+        model.addAttribute("ownSubscription", ownSubscription);
+        model.addAttribute("otherSubscription", otherSubscription);
+        List<Topic> topics = resourceService.getTrendingTopics().stream().limit(5).collect(Collectors.toList());
+        model.addAttribute("trendingTopics", topics);
+        List<com.ttn.linksharing.entity.Resource> subscribedResources = resourceService.getSubscribedResources(subscriptionService.getSubscribedTopics((User) httpSession.getAttribute("user")));
+        model.addAttribute("subscribedResources", subscribedResources);
         register = false;
         errorlogin = false;
         return "dashboard";
@@ -179,13 +213,16 @@ public class MainController {
     }
 
     @GetMapping("/profile")
-    public String editProfile(Model model, HttpSession httpSession, HttpServletRequest httpServletRequest) {
+    public String editProfile(Model model, HttpSession httpSession) {
 /*        if (httpServletRequest.getSession().getAttribute("user") == null) {
             return "redirect:/home";
         } else*/
         model.addAttribute("user", httpSession.getAttribute("user"));
+        model.addAttribute("topicCount", topicService.getTopics((User) httpSession.getAttribute("user")));
+        model.addAttribute("subscriptionCount", subscriptionService.getSubscription((User) httpSession.getAttribute("user")));
         model.addAttribute("register", register);
         model.addAttribute("errorlogin", errorlogin);
+        model.addAttribute("ownTopics", topicService.getTopicByUser((User) httpSession.getAttribute("user")));
         register = false;
         errorlogin = false;
         return "editprofile";
@@ -413,5 +450,33 @@ public class MainController {
             register = true;
             return "redirect:/dashboard";
         }
+    }
+
+    @GetMapping("/users")
+    public String showUsers(Model model) {
+        model.addAttribute("users", userService.getNonAdminUsers());
+        return "adminProfile";
+    }
+
+    @GetMapping("/topic/{topicID}")
+    public String getTopic(HttpSession httpSession, @PathVariable("topicID") Integer id, Model model) {
+        boolean sessionExists;
+        sessionExists = httpSession.getAttribute("user") != null;
+        model.addAttribute("sessionExists", sessionExists);
+        model.addAttribute("topic", topicService.getTopicById(id));
+        model.addAttribute("topicSubscribers", subscriptionService.getSubscriptions(topicService.getTopicById(id)));
+        model.addAttribute("subscribedResources", resourceService.getResourcesOfTopic(topicService.getTopicById(id)));
+        return "topic";
+    }
+
+    @GetMapping("/resource/{resourceID}")
+    public String getResource(HttpSession httpSession, @PathVariable("resourceID") Integer id, Model model) {
+        boolean sessionExists;
+        sessionExists = httpSession.getAttribute("user") != null;
+        model.addAttribute("sessionExists", sessionExists);
+        List<Topic> topics = resourceService.getTrendingTopics().stream().limit(5).collect(Collectors.toList());
+        model.addAttribute("trendingTopics", topics);
+        model.addAttribute("resource", resourceService.getResourceById(id));
+        return "resource";
     }
 }

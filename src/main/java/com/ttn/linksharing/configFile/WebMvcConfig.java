@@ -19,7 +19,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
         excluded.add("/reset");
         excluded.add("/register");
         excluded.add("/checkerror");
+        excluded.add("/topic/**");
+        excluded.add("/resource/**");
         excluded.add("/login");
+        excluded.add("/image/**");
+        excluded.add("/**.css");
+        excluded.add("/**.js");
         registry.addInterceptor(new CheckInterceptor())
         .excludePathPatterns(excluded);
     }

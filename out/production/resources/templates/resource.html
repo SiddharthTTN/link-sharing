@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="www.thymleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Post/Resource</title>
@@ -18,8 +18,9 @@
         }
     </style>
 
-    <link rel="stylesheet" href="../static/bootstrap.min.css"/>
-    <link rel="stylesheet" href="../static/dashboard.css"/>
+    <link rel="stylesheet" th:href="@{/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/home.css}"/>
+    <link rel="stylesheet" th:href="@{/dashboard.css}"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"/>
 
@@ -27,8 +28,8 @@
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
 
-    <script src="../static/jquery.min.js"></script>
-    <script src="../static/bootstrap.min.js"></script>
+    <script th:src="@{/jquery.min.js}"></script>
+    <script th:src="@{/bootstrap.min.js}"></script>
 </head>
 <body>
 
@@ -36,12 +37,12 @@
 <div class="container">
     <div class="row mainRow">
         <div class="col-md-5">
-            <a href="" class="link"><h3>Link Sharing</h3></a>
+            <a href="/home" class="link"><h3>Link Sharing</h3></a>
         </div>
 
         <!--Search Bar-->
 
-        <div class="col-md-3">
+        <div class="col-md-5">
             <div class="input-group">
                 <div class="input-group-prepend bg-white">
                     <span class="input-group-text border-right-0 rounded-right bg-white"><i
@@ -56,99 +57,20 @@
             </div>
         </div>
 
-        <!--Attachments-->
-
-        <div class="col-md-2">
-            <div>
-                <span id="basic-addon" class="float-right font-size-23"><a data-toggle="modal" href="#shareLink"><i
-                        class="fas fa-link"></i></a> &nbsp <a data-toggle="modal" href="#shareDoc"><i
-                        class="fab fa-creative-commons-share"></i></a></span>
-            </div>
-        </div>
-
-        <!-- Modal For Share Document -->
-
-        <div id="shareDoc" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Share Document: </h5>
-                    </div>
-                    <div class="modal-body">
-                        <form id="shareDocForm" method="post">
-                            <p><label>Document: </label>
-                                <input type="file" class="form-control" placeholder="Upload File" required></p>
-                            <br>
-                            <p><label>Description : </label>
-                                <textarea class="form-control" required></textarea>
-                            </p>
-                            <p><label>Topic : </label>
-                                <select class="custom-select col-md-5 float-right">
-                                    <Option>Public</Option>
-                                    <Option>Only Friends</Option>
-                                    <Option>Only Me</Option>
-                                </select>
-                            </p>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Share</button>
-                                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal For Share Link -->
-
-        <div id="shareLink" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Share Link: </h5>
-                    </div>
-                    <div class="modal-body">
-                        <form id="shareLinkForm" method="post">
-                            <p><label>Link: </label>
-                                <input type="text" class="form-control" placeholder="Enter Link" required></p>
-                            <br>
-                            <p><label>Description : </label>
-                                <textarea class="form-control" required></textarea>
-                            </p>
-                            <p><label>Topic : </label>
-                                <select class="custom-select float-right col-md-5">
-                                    <Option>Public</Option>
-                                    <Option>Only Friends</Option>
-                                    <Option>Only Me</Option>
-                                </select>
-                            </p>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Share</button>
-                                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">
-                                    Cancel
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!--User Tab-->
 
         <div class="col-md-2">
-            <div class="nav navbar float-right">
+            <div class="nav navbar float-right" th:unless="${sessionExists}"><a th:href="@{/home}"> Login </a></div>
+            <div class="nav navbar float-right" th:if="${sessionExists}">
                 <li class="dropdown"><i class="fas fa-user"> &nbsp &nbsp </i><a class="dropdown-toggle"
                                                                                 data-toggle="dropdown"
                                                                                 href="#">User<span
                         class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-pad-left">
-                        <li><a href="#"> Profile</a></li>
-                        <li><a href="#"> Logout</a></li>
+                        <li><a th:href="@{/dashboard}"> Dashboard</a></li>
+                        <li><a th:href="@{/profile}"> Profile</a></li>
+                        <li><a th:href="@{/logout}"> Logout</a></li>
                     </ul>
                 </li>
             </div>
@@ -161,25 +83,25 @@
     <div class="row">
         <div class="col-md-6">
 
-            <!--User Details-->
+            <!--Resource Details-->
 
             <div class="row">
                 <div class="add-padding add-border">
                     <div class="no-gutters ">
                         <div class="row">
                             <div class="col-md-3">
-                                <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg"
-                                     class="card-img" alt="...">
+                                 <img th:src="@{/image/} + ${resource.user.imagePath}" class="card-img">
                             </div>
                             <div class="col-md-8">
                                 <table class="w-100">
                                     <tr>
-                                        <td>Uday Pratap Singh</td>
-                                        <td class="float-right"><a href="" class="link">Grails</a></td>
+                                        <td th:text="${resource.user.firstName} + ' ' +${resource.user.lastName}"></td>
+                                        <td class="font-size-15 float-right"><a th:href="@{'/topic/'+ ${resource.topic.id}}" class="link"
+                                                                   th:text="${resource.topic.name}"></a></td>
                                     </tr>
                                     <tr>
-                                        <td>@Uday</td>
-                                        <td class="float-right">2:45 PM 2nd Feb Time</td>
+                                        <td th:text="'@' + ${resource.user.username}"></td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -198,18 +120,12 @@
 
                         <div class="row no-gutters add-padding">
                             <div class=""><br>
-                                <p class="card-text">This is a wider card with supporting text below as a
-                                    natural lead-in to additional content. This content is a little bitThis is a wider
-                                    card with supporting text below as a
-                                    natural lead-in to additional content. This content is a little bitThis is a wider
-                                    card with supporting text below as a
-                                    natural lead-in to additional content. This content is a little bit
-                                    longer.</p>
+                                <p class="card-text" th:text="${resource.description}"></p>
                                 <p class="card-text">
-                                    <small class="text-muted">
-                                        <i class="fab fa-facebook-f">&nbsp &nbsp</i><i
-                                            class="fab fa-twitter"></i>&nbsp &nbsp<i
-                                            class="fab fa-google-plus"></i></small>
+                                    <small class="text-muted"><a href="https://www.facebook.com" target="_blank">
+                                        <i class="fab fa-facebook-f">&nbsp &nbsp</i></a><a href="https://www.twitter.com" target="_blank"> <i
+                                            class="fab fa-twitter"></i>&nbsp &nbsp</a><a href="https://aboutme.google.com" target="_blank"><i
+                                            class="fab fa-google-plus"></i></a></small>
                                     <span class="font-size-11 float-right link"><a class="link"
                                                                                    href="">Download</a>&nbsp&nbsp&nbsp<a
                                             class="link"
@@ -238,70 +154,28 @@
                         <div>Trending Topic</div>
                     </div>
                     <div class="card-body text-dark">
-                        <div class="card mb-3">
+                        <div class="card mb-3" th:each="trendingTopic:${trendingTopics}">
                             <div class="row no-gutters">
                                 <div class="col-md-3">
-                                    <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg"
-                                         class="card-img" alt="...">
+                                    <img th:src="@{/image/} + ${trendingTopic.user.imagePath}"
+                                         class="card-img">
                                 </div>
                                 <div class="col-md-9">
                                     <div class="card-body">
-                                        <h5 class="card-title"><a>Grails</a></h5>
+                                        <h5 class="card-title"><a class="link" th:href="@{'/topic/'+ ${trendingTopic.id}}" th:text="*{trendingTopic.name}"></a></h5>
                                         <p class="card-text">
                                         <table class="w-100 font-size-15" cellspacing="14px">
                                             <tr>
-                                                <td>@uday</td>
-                                                <td>Subscriptions</td>
-                                                <td>Posts</td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">Subscribe</a></td>
-                                                <td>50</td>
-                                                <td>30</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-3">
-                            <div class="row no-gutters">
-                                <div class="col-md-3">
-                                    <img src="https://www.pharmmd.com/wp-content/uploads/2018/09/avatar.jpg"
-                                         class="card-img" alt="...">
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a>Grails</a></h5>
-                                        <p class="card-text">
-                                        <table class="w-100 font-size-15" cellspacing="14px">
-                                            <tr>
-                                                <td>@uday</td>
-                                                <td>Subscriptions</td>
-                                                <td>Posts</td>
+                                                <td th:text="'@' + *{trendingTopic.user.username}"></td>
+                                                <th>Subscriptions</th>
+                                                <th>Posts</th>
                                             </tr>
                                             <tr>
                                                 <td><a href="#">Unsubscribe</a></td>
-                                                <td>50</td>
-                                                <td>30</td>
+                                                <td th:text="${@subscriptionService.getSubscriptionCount(trendingTopic)}"></td>
+                                                <td th:text="${@resourceService.getResourceCount(trendingTopic)}"></td>
                                             </tr>
                                         </table>
-                                        </p>
-                                        <p class="card-text">
-                                            <small class="text-muted">
-                                                <select class="col-md-4">
-                                                    <option>Serious</option>
-                                                    <option></option>
-                                                    <option></option>
-                                                </select>&nbsp
-                                                <select class="col-md-4">
-                                                    <option>Private</option>
-                                                    <option></option>
-                                                    <option></option>
-                                                </select>&nbsp &nbsp &nbsp
-                                                <a href="#"><i class="far fa-envelope">&nbsp &nbsp</i></a><a href="#"><i
-                                                    class="far fa-edit"></i></a>&nbsp &nbsp<a href="#"><i
-                                                    class="fas fa-trash-alt"></i></a></small>
                                         </p>
                                     </div>
                                 </div>

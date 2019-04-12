@@ -1,6 +1,7 @@
 package com.ttn.linksharing.service;
 
 import com.ttn.linksharing.entity.LinkResource;
+import com.ttn.linksharing.entity.Resource;
 import com.ttn.linksharing.entity.Topic;
 import com.ttn.linksharing.entity.User;
 import com.ttn.linksharing.repositories.LinkResourceRepository;
@@ -19,6 +20,14 @@ public class LinkResourceService {
         linkResource.setDescription(description);
         linkResource.setUser(user);
         linkResource.setTopic(topic);
+        linkResourceRepository.save(linkResource);
+    }
+
+    public LinkResource editResource(Integer id){
+        return linkResourceRepository.findById(id).get();
+    }
+
+    public void saveLink(LinkResource linkResource){
         linkResourceRepository.save(linkResource);
     }
 }

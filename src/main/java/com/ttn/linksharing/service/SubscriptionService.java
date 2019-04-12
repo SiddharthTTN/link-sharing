@@ -40,6 +40,9 @@ public class SubscriptionService {
         return subscriptionRepository.findByUserAndTopic(user, topic);
     }
 
+    public Integer confirmSubscriptionCount(User user, Topic topic) {
+        return subscriptionRepository.countByUserAndAndTopic(user, topic);
+    }
     public List<Subscription> getSubscriptions(User user) {
         return subscriptionRepository.findByUser(user);
     }
@@ -71,6 +74,12 @@ public class SubscriptionService {
         subscriptionRepository.deleteById(subscriptionID);
     }
 
-    ;
+    public void subscribeUser(User user,Topic topic){
+        Subscription subscription= new Subscription();
+        subscription.setUser(user);
+        subscription.setTopic(topic);
+        subscriptionRepository.save(subscription);
+    }
+
 }
 

@@ -16,6 +16,7 @@ public interface SubscriptionRepository extends CrudRepository<Subscription, Int
     List<Topic> getSubscribedTopic(@Param("user") User user);
 
     Subscription findByUserAndTopic(User user, Topic topic);
+    Integer countByUserAndAndTopic(User user, Topic topic);
 
     List<Subscription> findByUser(User user);
     List<Subscription> findByTopic(Topic topic);
@@ -23,6 +24,7 @@ public interface SubscriptionRepository extends CrudRepository<Subscription, Int
     Integer countByTopic(Topic topic);
 
     void deleteByTopic(Topic topic);
+
 
 
 }

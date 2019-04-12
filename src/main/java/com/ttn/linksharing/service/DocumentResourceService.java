@@ -33,4 +33,8 @@ public class DocumentResourceService {
         }
         documentResourceRepository.save(documentResource);
     }
+
+    public DocumentResource getDocumentByID(Integer id){
+        return documentResourceRepository.findById(id).get();
+    }
 }

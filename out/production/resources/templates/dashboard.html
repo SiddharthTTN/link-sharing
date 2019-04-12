@@ -352,14 +352,15 @@
                                                             th:value="${seriousness}"
                                                             th:text="${seriousness.getValue()}"
                                                             th:selected="${seriousness==ownSubscription.seriousness}"
-                                                            ></Option>
+                                                    ></Option>
                                                 </select>&nbsp
-                                                <select class="col-md-4 updateVisibility" name="visibility" th:data-topicID="${ownSubscription.topic.id}">
+                                                <select class="col-md-4 updateVisibility" name="visibility"
+                                                        th:data-topicID="${ownSubscription.topic.id}">
                                                     <Option th:each="visibility : ${T(com.ttn.linksharing.enums.Visibility).values()}"
                                                             th:value="${visibility}"
                                                             th:text="${visibility.getValue()}"
                                                             th:selected="${visibility==ownSubscription.topic.visibility}"
-                                                            ></Option>
+                                                    ></Option>
                                                 </select>&nbsp &nbsp &nbsp
                                                 <a href="#sendInviteFromSub" data-toggle="modal"><i
                                                         class="far fa-envelope sendInviteFromSub"
@@ -394,7 +395,10 @@
                                                 <th>Posts</th>
                                             </tr>
                                             <tr>
-                                                <td><a href="#" class="unsubscribeTopic" th:data-topicID="${otherSubscription.topic.id}" th:data-subscriptionID="${otherSubscription.id}">Unsubscribe</a></td>
+                                                <td><a href="#" class="unsubscribeTopic"
+                                                       th:data-topicID="${otherSubscription.topic.id}"
+                                                       th:data-subscriptionID="${otherSubscription.id}">Unsubscribe</a>
+                                                </td>
                                                 <td th:text="${@subscriptionService.getSubscriptionCount(otherSubscription.topic)}"></td>
                                                 <td th:text="${@resourceService.getResourceCount(otherSubscription.topic)}"></td>
                                             </tr>
@@ -402,7 +406,8 @@
                                         </p>
                                         <p class="card-text" align="right">
                                             <small class="text-muted">
-                                                <select class="col-md-4 updateSeriousness" name="seriousness" th:data-subscriptionID="${otherSubscription.id}">
+                                                <select class="col-md-4 updateSeriousness" name="seriousness"
+                                                        th:data-subscriptionID="${otherSubscription.id}">
                                                     <Option th:each="seriousness : ${T(com.ttn.linksharing.enums.Seriousness).values()}"
                                                             th:value="${seriousness}"
                                                             th:text="${seriousness.getValue()}"
@@ -449,7 +454,9 @@
                                                 <th>Posts</th>
                                             </tr>
                                             <tr>
-                                                <td><a href="#">Unsubscribe</a></td>
+                                                <!--<td><a href="#">Unsubscribe</a></td>-->
+                                                <!--<td><a href="#">Subscribe</a></td>-->
+                                                <td></td>
                                                 <td th:text="${@subscriptionService.getSubscriptionCount(trendingTopic)}"></td>
                                                 <td th:text="${@resourceService.getResourceCount(trendingTopic)}"></td>
                                             </tr>
@@ -506,7 +513,7 @@
                                                 </a>&nbsp&nbsp&nbsp
                                                 <a
                                                         class="link"
-                                                        th:href="${subscribedResource.url}" target="_blank"
+                                                        th:href="'https://'+${subscribedResource.url}" target="_blank"
                                                         th:if="${@resourceService.getDType(subscribedResource.id)}=='Link'">View Full Site
                                                 </a>&nbsp&nbsp&nbsp
                                                 <a
@@ -515,7 +522,7 @@
                                                 </a>&nbsp&nbsp&nbsp
                                                 <a
                                                         class="link"
-                                                        th:href="@{'/resource/'+ ${subscribedResource.id}}" download>View post
+                                                        th:href="@{'/resource/'+ ${subscribedResource.id}}">View post
                                                 </a></span>
                                         </p>
                                     </div>
@@ -595,7 +602,7 @@
 
         });
 
-        $('#sendInviteFormfromSub').submit(function() {
+        $('#sendInviteFormfromSub').submit(function () {
             $('select').removeAttr('disabled');
         });
 

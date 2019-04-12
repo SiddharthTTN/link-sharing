@@ -1,9 +1,6 @@
 package com.ttn.linksharing.controller;
 
-import com.ttn.linksharing.entity.DocumentResource;
-import com.ttn.linksharing.entity.Subscription;
-import com.ttn.linksharing.entity.Topic;
-import com.ttn.linksharing.entity.User;
+import com.ttn.linksharing.entity.*;
 import com.ttn.linksharing.enums.Seriousness;
 import com.ttn.linksharing.enums.Visibility;
 import com.ttn.linksharing.service.*;
@@ -348,8 +345,8 @@ public class MainController {
 
     @GetMapping("/document/{filename}")
     public ResponseEntity<Resource> downloadFile(@PathVariable String filename, HttpServletResponse response) {
-        response.setHeader("Content-Type","application/octet-stream");
-        response.setHeader("Content-Disposition","attachment");
+        response.setHeader("Content-Type", "application/octet-stream");
+        response.setHeader("Content-Disposition", "attachment");
         Resource file = loadAsDocument(filename);
         if (file != null)
             return ResponseEntity.ok().body(file);
@@ -452,6 +449,15 @@ public class MainController {
         }
     }
 
+    @PostMapping("/editLinkResource")
+    public String editLinkResource(String link, String description, Integer resourceId) {
+        LinkResource linkResource= linkResourceService.editResource(resourceId);
+        linkResource.setUrl(link);
+        linkResource.setDescription(description);
+        linkResourceService.saveLink(linkResource);
+        return "redirect:/resource/" + resourceId;
+    }
+
     @PostMapping("/createDocumentResource")
     public String createDocumentResource(RedirectAttributes redirectAttributes, HttpSession httpSession, String description, MultipartFile document, Integer topicId) {
         if (description.isEmpty()) {
@@ -477,6 +483,16 @@ public class MainController {
             register = true;
             return "redirect:/dashboard";
         }
+    }
+
+    @PostMapping("/editDocumentResource")
+    public String editDocumentResource(String description, MultipartFile document, Integer resourceId) {
+            DocumentResource documentResource = documentResourceService.getDocumentByID(resourceId);
+            documentResource.setDocumentResource(document);
+            documentResource.setDescription(description);
+            documentResourceService.shareDocument(documentResource);
+            return"redirect:/resource/" + resourceId;
+
     }
 
     @GetMapping("/users")
@@ -506,7 +522,10 @@ public class MainController {
     private void topicresource(HttpSession httpSession, Model model) {
         boolean sessionExists;
         sessionExists = httpSession.getAttribute("user") != null;
-        model.addAttribute("user", httpSession.getAttribute("user"));
+        if (sessionExists)
+            model.addAttribute("user", httpSession.getAttribute("user"));
+        else
+            model.addAttribute("user", new User());
         model.addAttribute("sessionExists", sessionExists);
     }
 
@@ -545,19 +564,18 @@ public class MainController {
     @PutMapping("/updateSeriousness")
     @ResponseBody
     public void updateSeriousness(@RequestParam("id") Integer subscriptionID, @RequestParam("name") Seriousness updatedSeriousness) {
-    Subscription subscription=subscriptionService.getById(subscriptionID);
-    subscription.setSeriousness(updatedSeriousness);
-    subscriptionService.save(subscription);
+        Subscription subscription = subscriptionService.getById(subscriptionID);
+        subscription.setSeriousness(updatedSeriousness);
+        subscriptionService.save(subscription);
     }
 
     @PutMapping("/updateVisibility")
     @ResponseBody
     public void updateVisibility(@RequestParam("id") Integer topicID, @RequestParam("name") Visibility updatedVisibility) {
-    Topic topic=topicService.getTopicById(topicID);
-    topic.setVisibility(updatedVisibility);
-    topicService.save(topic);
+        Topic topic = topicService.getTopicById(topicID);
+        topic.setVisibility(updatedVisibility);
+        topicService.save(topic);
     }
-
 
 
 }

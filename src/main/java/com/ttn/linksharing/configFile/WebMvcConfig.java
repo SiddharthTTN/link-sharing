@@ -19,6 +19,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         excluded.add("/reset");
         excluded.add("/register");
         excluded.add("/checkerror");
+        excluded.add("/sendemail");
         excluded.add("/topic/**");
         excluded.add("/resource/**");
         excluded.add("/login");

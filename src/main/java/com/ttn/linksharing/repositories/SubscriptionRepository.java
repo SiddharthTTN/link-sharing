@@ -24,4 +24,5 @@ public interface SubscriptionRepository extends CrudRepository<Subscription, Int
 
     void deleteByTopic(Topic topic);
 
+
 }

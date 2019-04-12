@@ -4,6 +4,7 @@ import com.ttn.linksharing.entity.DocumentResource;
 import com.ttn.linksharing.entity.Subscription;
 import com.ttn.linksharing.entity.Topic;
 import com.ttn.linksharing.entity.User;
+import com.ttn.linksharing.enums.Seriousness;
 import com.ttn.linksharing.enums.Visibility;
 import com.ttn.linksharing.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
@@ -193,15 +195,13 @@ public class MainController {
                 .filter(e -> e.getTopic().getUser().getId().equals(((User) httpSession.getAttribute("user")).getId()))
                 .collect(Collectors.toList());
         List<Subscription> otherSubscription = subscriptions.stream().filter(e -> !e.getTopic().getUser().getId().equals(((User) httpSession.getAttribute("user")).getId())).collect(Collectors.toList());
-        model.addAttribute("ownSubscription", ownSubscription);
+        model.addAttribute("ownSubscriptions", ownSubscription);
         model.addAttribute("otherSubscription", otherSubscription);
         List<Topic> topics = resourceService.getTrendingTopics().stream().limit(5).collect(Collectors.toList());
         model.addAttribute("trendingTopics", topics);
         List<com.ttn.linksharing.entity.Resource> subscribedResources = resourceService.getSubscribedResources(subscriptionService.getSubscribedTopics((User) httpSession.getAttribute("user")));
         model.addAttribute("subscribedResources", subscribedResources);
-        System.out.println(subscribedResources.toString());
         model.addAttribute("docOrLink", docOrLink);
-        System.out.println(resourceService.getDType(11));
         register = false;
         errorlogin = false;
         return "dashboard";
@@ -336,6 +336,29 @@ public class MainController {
     private Resource loadAsResource(String filename) {
         try {
             Path file = Paths.get("/home/ttn/linksharing-attatchments/userimage").resolve(filename);
+            Resource resource = new UrlResource(file.toUri());
+            if (resource.exists()) {
+                return resource;
+            }
+            return null;
+        } catch (MalformedURLException e) {
+            return null;
+        }
+    }
+
+    @GetMapping("/document/{filename}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable String filename, HttpServletResponse response) {
+        response.setHeader("Content-Type","application/octet-stream");
+        response.setHeader("Content-Disposition","attachment");
+        Resource file = loadAsDocument(filename);
+        if (file != null)
+            return ResponseEntity.ok().body(file);
+        return ResponseEntity.notFound().build();
+    }
+
+    private Resource loadAsDocument(String filename) {
+        try {
+            Path file = Paths.get("/home/ttn/linksharing-attatchments/linkdocument/").resolve(filename);
             Resource resource = new UrlResource(file.toUri());
             if (resource.exists()) {
                 return resource;
@@ -493,6 +516,12 @@ public class MainController {
         subscriptionService.deleteByTopic(topicService.getTopicById(topicID));
     }
 
+    @DeleteMapping("/unsubscribeTopic")
+    @ResponseBody
+    public void unsubscribeTopic(@RequestParam("id") Integer subscriptionID) {
+        subscriptionService.deleteById(subscriptionID);
+    }
+
     @GetMapping("/updateSubscription")
     @ResponseBody
     public Integer updateSubscription(HttpSession httpSession) {
@@ -512,6 +541,23 @@ public class MainController {
         topic.setName(updatedName);
         topicService.save(topic);
     }
+
+    @PutMapping("/updateSeriousness")
+    @ResponseBody
+    public void updateSeriousness(@RequestParam("id") Integer subscriptionID, @RequestParam("name") Seriousness updatedSeriousness) {
+    Subscription subscription=subscriptionService.getById(subscriptionID);
+    subscription.setSeriousness(updatedSeriousness);
+    subscriptionService.save(subscription);
+    }
+
+    @PutMapping("/updateVisibility")
+    @ResponseBody
+    public void updateVisibility(@RequestParam("id") Integer topicID, @RequestParam("name") Visibility updatedVisibility) {
+    Topic topic=topicService.getTopicById(topicID);
+    topic.setVisibility(updatedVisibility);
+    topicService.save(topic);
+    }
+
 
 
 }

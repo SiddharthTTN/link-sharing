@@ -27,7 +27,7 @@ public class DocumentResourceService {
             String filePath = UPLOAD_DOCUMENT_FOLDER + fileName.replaceAll(" ", "-");
 //            String filePath = fileName.replaceAll(" ", "-");
             multipartFile.transferTo(new File(filePath));
-            documentResource.setPath(fileName);
+            documentResource.setPath(fileName.replaceAll(" ", "-"));
         } catch (IOException e) {
             e.printStackTrace();
         }

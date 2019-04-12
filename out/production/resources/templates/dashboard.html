@@ -304,7 +304,7 @@
                     <div class="card-header">Subscriptions:
                     </div>
                     <div class="card-body text-dark">
-                        <div class="card mb-3" th:each="ownSubscription:${ownSubscription}">
+                        <div class="card mb-3" th:each="ownSubscription:${ownSubscriptions}">
                             <div class="row no-gutters">
                                 <div class="col-md-3">
                                     <img th:src="@{/image/} + ${ownSubscription.user.imagePath}"
@@ -324,7 +324,8 @@
                                                 <input type="text" class="form-control mb-2 mr-sm-2 w-50"
                                                        th:placeholder="${ownSubscription.topic.name}"
                                                        id="updatedTopicName" name="updatedTopicName">
-                                                <button type="button" class="updateTopic btn btn-primary mb-2" th:data-topicID="${ownSubscription.topic.id}">Update
+                                                <button type="button" class="updateTopic btn btn-primary mb-2"
+                                                        th:data-topicID="${ownSubscription.topic.id}">Update
                                                 </button>
                                             </form>
                                         </div>
@@ -337,7 +338,7 @@
                                                 <th>Posts</th>
                                             </tr>
                                             <tr>
-                                                <td><a href="" id="unsubOwn">Unsubscribe</a></td>
+                                                <td><a href="" class="unsubOwn">Unsubscribe</a></td>
                                                 <td th:text="${@subscriptionService.getSubscriptionCount(ownSubscription.topic)}"></td>
                                                 <td th:text="${@resourceService.getResourceCount(ownSubscription.topic)}"></td>
                                             </tr>
@@ -345,15 +346,20 @@
                                         </p>
                                         <p class="card-text">
                                             <small class="text-muted">
-                                                <select class="col-md-4" name="seriousness">
+                                                <select class="col-md-4 updateSeriousness" name="seriousness"
+                                                        th:data-subscriptionID="${ownSubscription.id}">
                                                     <Option th:each="seriousness : ${T(com.ttn.linksharing.enums.Seriousness).values()}"
                                                             th:value="${seriousness}"
-                                                            th:text="${seriousness.getValue()}"></Option>
+                                                            th:text="${seriousness.getValue()}"
+                                                            th:selected="${seriousness==ownSubscription.seriousness}"
+                                                            ></Option>
                                                 </select>&nbsp
-                                                <select class="col-md-4" name="visibility">
+                                                <select class="col-md-4 updateVisibility" name="visibility" th:data-topicID="${ownSubscription.topic.id}">
                                                     <Option th:each="visibility : ${T(com.ttn.linksharing.enums.Visibility).values()}"
                                                             th:value="${visibility}"
-                                                            th:text="${visibility.getValue()}"></Option>
+                                                            th:text="${visibility.getValue()}"
+                                                            th:selected="${visibility==ownSubscription.topic.visibility}"
+                                                            ></Option>
                                                 </select>&nbsp &nbsp &nbsp
                                                 <a href="#sendInviteFromSub" data-toggle="modal"><i
                                                         class="far fa-envelope sendInviteFromSub"
@@ -388,7 +394,7 @@
                                                 <th>Posts</th>
                                             </tr>
                                             <tr>
-                                                <td><a href="#">Unsubscribe</a></td>
+                                                <td><a href="#" class="unsubscribeTopic" th:data-topicID="${otherSubscription.topic.id}" th:data-subscriptionID="${otherSubscription.id}">Unsubscribe</a></td>
                                                 <td th:text="${@subscriptionService.getSubscriptionCount(otherSubscription.topic)}"></td>
                                                 <td th:text="${@resourceService.getResourceCount(otherSubscription.topic)}"></td>
                                             </tr>
@@ -396,10 +402,11 @@
                                         </p>
                                         <p class="card-text" align="right">
                                             <small class="text-muted">
-                                                <select class="col-md-4">
+                                                <select class="col-md-4 updateSeriousness" name="seriousness" th:data-subscriptionID="${otherSubscription.id}">
                                                     <Option th:each="seriousness : ${T(com.ttn.linksharing.enums.Seriousness).values()}"
                                                             th:value="${seriousness}"
-                                                            th:text="${seriousness.getValue()}"></Option>
+                                                            th:text="${seriousness.getValue()}"
+                                                            th:selected="${seriousness==otherSubscription.seriousness}"></Option>
                                                 </select>&nbsp &nbsp &nbsp
                                                 <a href="#sendInviteFromSub" data-toggle="modal"><i
                                                         class="far fa-envelope sendInviteFromSub"
@@ -467,7 +474,8 @@
                     <div class="card-header">Inbox
                     </div>
                     <div class="card-body text-dark">
-                        <div class="card mb-3" th:each="subscribedResource:${subscribedResources}">
+                        <div class="card mb-3" th:each="subscribedResource:${subscribedResources}"
+                             th:class="'topicPost' + ${subscribedResource.topic.id}">
                             <div class="row no-gutters">
                                 <div class="col-md-3">
                                     <img th:src="@{/image/} + ${subscribedResource.user.imagePath}"
@@ -491,13 +499,24 @@
                                                     class="fab fa-twitter"></i>&nbsp &nbsp</a><a
                                                     href="https://aboutme.google.com" target="_blank"><i
                                                     class="fab fa-google-plus"></i></a></small>
-                                            <span class="font-size-11 float-right link"><a class="link"  th:unless="${@resourceService.getDType(subscribedResource.id)}=='Link'"
-                                                                                           href="">Download</a>&nbsp&nbsp&nbsp<a
-                                                    class="link"
-                                                    href="" th:if="${@resourceService.getDType(subscribedResource.id)}=='Link'">View Full Site</a>&nbsp&nbsp&nbsp<a class="link"
-                                                                                                href="">Mark as Read</a>&nbsp&nbsp&nbsp<a
-                                                    class="link"
-                                                    th:href="@{'/resource/'+ ${subscribedResource.id}}">View post</a></span>
+                                            <span class="font-size-11 float-right link">
+                                                <a class="link"
+                                                   th:unless="${@resourceService.getDType(subscribedResource.id)}=='Link'"
+                                                   th:href="@{'/document/'+${subscribedResource.path}}">Download
+                                                </a>&nbsp&nbsp&nbsp
+                                                <a
+                                                        class="link"
+                                                        th:href="${subscribedResource.url}" target="_blank"
+                                                        th:if="${@resourceService.getDType(subscribedResource.id)}=='Link'">View Full Site
+                                                </a>&nbsp&nbsp&nbsp
+                                                <a
+                                                        class="link"
+                                                        href="">Mark as Read
+                                                </a>&nbsp&nbsp&nbsp
+                                                <a
+                                                        class="link"
+                                                        th:href="@{'/resource/'+ ${subscribedResource.id}}" download>View post
+                                                </a></span>
                                         </p>
                                     </div>
                                 </div>
@@ -538,11 +557,12 @@
     $(document).ready(function () {
         $("#sucessRegister").fadeOut(6000);
         $("#errordisplay").fadeOut(6000);
-        $('#unsubOwn').click(function (e) {
+        $('.unsubOwn').click(function (e) {
             e.preventDefault();
             alert("You Cannot Unsubscribe the topic created by you");
 
         });
+
         $('.deleteOwnTopic').click(function (e) {
             e.preventDefault();
             var el = this;
@@ -559,6 +579,11 @@
                         $(el).closest('.card').fadeOut(800, function () {
                             $(this).remove();
                         });
+                        $('.topicPost' + topicId).css('background', 'lightgray');
+                        $('.topicPost' + topicId).fadeOut(800, function () {
+                            $(this).remove();
+                        });
+
                         updateSubscription();
                         updateTopicCount();
                     },
@@ -569,11 +594,49 @@
             }
 
         });
+
+        $('#sendInviteFormfromSub').submit(function() {
+            $('select').removeAttr('disabled');
+        });
+
+        $('.unsubscribeTopic').click(function (e) {
+            e.preventDefault();
+            var el = this;
+            var id = this.id;
+            var subscriptionID = el.getAttribute("data-subscriptionID");
+            var topicId = el.getAttribute("data-topicId");
+            // AJAX Request
+            if (confirm('Are you sure you want to unsubscribe this topic?')) {
+                $.ajax({
+                    url: '/unsubscribeTopic',
+                    type: 'DELETE',
+                    data: {id: subscriptionID},
+                    success: function () {
+                        $(el).closest('.card').css('background', 'lightgray');
+                        $(el).closest('.card').fadeOut(800, function () {
+                            $(this).remove();
+                        });
+                        $('.topicPost' + topicId).css('background', 'lightgray');
+                        $('.topicPost' + topicId).fadeOut(800, function () {
+                            $(this).remove();
+                        });
+
+                        updateSubscription();
+                    },
+                    error: function () {
+                        alert("Sorry Unsubscription Failed Failed.")
+                    }
+                });
+            }
+
+        });
+
         $('.sendInviteFromSub').click(function () {
             var el = this;
             var id = this.id;
             var topicId = el.getAttribute("data-topicId");
             $('#selectedTopic').val(topicId);
+            $('#selectedTopic').prop('disabled', 'disabled');
         });
 
         $('.editTopicName').click(function (e) {
@@ -612,6 +675,54 @@
                 }
             });
         });
+
+        $('.updateSeriousness').change(function (e) {
+            console.log(1);
+            var el = this;
+            var subscriptionId = el.getAttribute("data-subscriptionID");
+            console.log(subscriptionId);
+            var updatedSeriousness = $(el).val();
+            $.ajax({
+                url: '/updateSeriousness',
+                type: 'PUT',
+                data: {
+                    id: subscriptionId,
+                    name: updatedSeriousness
+                },
+                success: function () {
+                    alert("Seriousness Updated successfully");
+
+
+                },
+                error: function () {
+                    alert("Sorry Updation Failed.")
+                }
+            });
+        });
+
+        $('.updateVisibility').change(function (e) {
+            console.log(1);
+            var el = this;
+            var topicId = el.getAttribute("data-topicId");
+            var updatedVisibility = $(el).val();
+            $.ajax({
+                url: '/updateVisibility',
+                type: 'PUT',
+                data: {
+                    id: topicId,
+                    name: updatedVisibility
+                },
+                success: function () {
+                    alert("Visibility Updated successfully");
+
+
+                },
+                error: function () {
+                    alert("Sorry Updation Failed.")
+                }
+            });
+        });
+
 
     });
 </script>

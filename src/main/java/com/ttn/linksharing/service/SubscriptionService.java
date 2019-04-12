@@ -59,6 +59,18 @@ public class SubscriptionService {
         topicRepository.deleteById(topic.getId());
     }
 
+    public Subscription getById(Integer id){
+        return subscriptionRepository.findById(id).get();
+    }
+
+    public void save(Subscription subscription){
+        subscriptionRepository.save(subscription);
+    }
+
+    public void deleteById(Integer subscriptionID) {
+        subscriptionRepository.deleteById(subscriptionID);
+    }
+
     ;
 }
 

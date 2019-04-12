@@ -28,5 +28,7 @@ public class ResourceService {
 
     public Resource getResourceById(Integer id){return resourceRepository.findById(id).get();}
 
+    public String getDType(Integer id){return resourceRepository.dtype(id);}
+
 
 }

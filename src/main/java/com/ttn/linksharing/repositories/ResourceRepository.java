@@ -5,7 +5,9 @@ import com.ttn.linksharing.entity.Topic;
 import com.ttn.linksharing.entity.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface ResourceRepository extends CrudRepository<Resource,Integer> {
@@ -19,6 +21,11 @@ public interface ResourceRepository extends CrudRepository<Resource,Integer> {
 
     List<Resource> findTop5ByUserIsNotNullOrderByIdDesc();
 
+    @Transactional
+    void deleteByTopic(Topic topic);
 
     List<Resource> findByTopic(Topic topic);
+
+    @Query(value = "select dtype from resource where id=:id",nativeQuery = true)
+    String dtype(@Param("id") Integer id);
 }

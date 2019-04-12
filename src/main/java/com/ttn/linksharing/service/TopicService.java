@@ -9,6 +9,7 @@ import com.ttn.linksharing.repositories.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -23,6 +24,9 @@ public class TopicService {
     public void save(Topic topic, Subscription subscription) {
         topicRepository.save(topic);
         subscriptionRepository.save(subscription);
+    }
+    public void save(Topic topic) {
+        topicRepository.save(topic);
     }
 
     public Integer getTopics(User user) {
@@ -52,4 +56,7 @@ public class TopicService {
     public List<Topic> getTopicByUser(User user) {
         return topicRepository.findByUser(user);
     }
+
+/*    @Transactional
+    public void deleteTopicByID(Integer id){topicRepository.deleteById(id);}*/
 }

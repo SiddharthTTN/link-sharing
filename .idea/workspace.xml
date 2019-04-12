@@ -2,41 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="612a267d-ddb7-4178-996b-6632d356e80e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8f722e16-47a5-45f3-a927-22a38f0b1ca3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8f722e16-47a5-45f3-a927-22a38f0b1ca3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/configFile/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/configFile/WebMvcConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/SpringLinkSharingApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/SpringLinkSharingApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/entity/Subscription.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/entity/Subscription.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/entity/Topic.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/entity/Topic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/repositories/ResourceRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/repositories/ResourceRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/repositories/SubscriptionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/repositories/SubscriptionRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/repositories/TopicRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/repositories/TopicRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/service/ResourceService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/service/ResourceService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/service/SubscriptionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/service/SubscriptionService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/service/TopicService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/com/ttn/linksharing/service/TopicService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/static/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/static/dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/resources/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/editprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/editprofile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/resetPassword.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/resetPassword.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/configFile/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/configFile/WebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/resource.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/resource.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/resources/templates/topic.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/templates/topic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringLinkSharingApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringLinkSharingApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/dto/SubscriptionDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/dto/SubscriptionDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Subscription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Subscription.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Topic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Topic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/ResourceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/ResourceRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/SubscriptionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/SubscriptionRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/TopicRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/TopicRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/ResourceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/ResourceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/SubscriptionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/SubscriptionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/TopicService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/TopicService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adminProfile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adminProfile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/editprofile.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/editprofile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resetPassword.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/resetPassword.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/resource.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/resource.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/topic.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/topic.html" afterDir="false" />
     </list>
@@ -111,18 +99,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="271">
+              <caret line="496" column="126" selection-start-line="496" selection-start-column="126" selection-end-line="496" selection-end-column="126" />
+              <folding>
+                <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#5;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#5;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#5;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#6;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#7;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="81" column="9" selection-start-line="81" selection-start-column="9" selection-end-line="81" selection-end-column="9" />
+            <state relative-caret-position="62">
+              <caret line="203" column="57" selection-start-line="203" selection-start-column="57" selection-end-line="203" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#homePage#0;class#MainController#0" />
                 <element signature="method#resetPassword#0;class#MainController#0" />
                 <element signature="method#changePassword#0;class#MainController#0" />
                 <element signature="method#register#0;class#MainController#0" />
                 <element signature="method#login#0;class#MainController#0" />
-                <element signature="method#dash#0;class#MainController#0" />
                 <element signature="method#logout#0;class#MainController#0" />
                 <element signature="method#editProfile#0;class#MainController#0" />
                 <element signature="method#updateProfile#0;class#MainController#0" />
@@ -138,8 +150,36 @@
                 <element signature="method#subscribe#0;class#MainController#0" />
                 <element signature="method#createLinkResource#0;class#MainController#0" />
                 <element signature="method#createDocumentResource#0;class#MainController#0" />
+                <element signature="method#showUsers#0;class#MainController#0" />
                 <element signature="method#getTopic#0;class#MainController#0" />
                 <element signature="method#getResource#0;class#MainController#0" />
+                <element signature="method#topicresource#0;class#MainController#0" />
+                <element signature="method#updateSubscription#0;class#MainController#0" />
+                <element signature="method#updateSubscription#1;class#MainController#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/ResourceRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="412">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/ResourceService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="381">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -168,6 +208,14 @@
       <find>body</find>
       <find>mailto</find>
       <find>selectedTopic</find>
+      <find>fa-star</find>
+      <find>fa-fw</find>
+      <find>fa</find>
+      <find>fa</find>
+      <find>deleteTopic</find>
+      <find>editTopicName</find>
+      <find>updateTopic</find>
+      <find>fixTopic</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -179,7 +227,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Rating.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Subscriber.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/enums/ResourceType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringLinkSharingApplication.java" />
         <option value="$PROJECT_DIR$/src/main/resources/template/home.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/ResourceRating.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/ReadingItem.java" />
@@ -208,25 +255,26 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/dashboard.css" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8f722e16-47a5-45f3-a927-22a38f0b1ca3/console_1.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8f722e16-47a5-45f3-a927-22a38f0b1ca3/console.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/TopicRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/TopicService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/resetPassword.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/UserRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/adminProfile.html" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/SubscriptionRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/SubscriptionService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/ResourceRepository.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/editprofile.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/ResourceService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/configFile/WebMvcConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/resource.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/topic.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/User.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/topic.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/resource.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/SubscriptionRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/TopicRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/SubscriptionService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringLinkSharingApplication.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/TopicService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/ResourceService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/ResourceRepository.java" />
       </list>
     </option>
   </component>
@@ -374,8 +422,9 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554906749470" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555062906972" />
     <property name="database.console.LAST_STATE" value="false" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -464,15 +513,16 @@
       <workItem from="1554182777233" duration="21351000" />
       <workItem from="1554270267943" duration="23285000" />
       <workItem from="1554363666173" duration="4090000" />
-      <workItem from="1554399449665" duration="157420000" />
+      <workItem from="1554399449665" duration="183682000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207169000" />
+    <option name="totallyTimeSpent" value="233431000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="700" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Web" order="0" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2621212" />
@@ -482,23 +532,24 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="UI Designer" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Database Console" order="0" weight="0.32924694" />
-      <window_info anchor="bottom" id="Messages" order="1" weight="0.32924694" />
-      <window_info anchor="bottom" id="Java Enterprise" order="2" />
-      <window_info anchor="bottom" id="Spring" order="3" weight="0.32924694" />
-      <window_info anchor="bottom" id="Message" order="4" />
-      <window_info anchor="bottom" id="Find" order="5" weight="0.32924694" />
-      <window_info anchor="bottom" id="Run" order="6" weight="0.61646235" />
-      <window_info anchor="bottom" id="Debug" order="7" weight="0.39929947" />
-      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" />
-      <window_info anchor="bottom" id="Build" order="11" weight="0.32924694" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.3765324" />
-      <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" weight="0.32924694" />
-      <window_info anchor="bottom" id="Database Changes" order="15" weight="0.32924694" />
-      <window_info anchor="bottom" id="Version Control" order="16" weight="0.32924694" />
+      <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.32924694" />
+      <window_info anchor="bottom" id="Database Console" order="1" weight="0.32924694" />
+      <window_info anchor="bottom" id="Messages" order="2" weight="0.32924694" />
+      <window_info anchor="bottom" id="Java Enterprise" order="3" />
+      <window_info anchor="bottom" id="Spring" order="4" weight="0.32924694" />
+      <window_info anchor="bottom" id="Message" order="5" />
+      <window_info anchor="bottom" id="Find" order="6" weight="0.32924694" />
+      <window_info anchor="bottom" id="Run" order="7" weight="0.74781084" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.39929947" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="11" />
+      <window_info anchor="bottom" id="Build" order="12" weight="0.32924694" />
+      <window_info anchor="bottom" id="Terminal" order="13" weight="0.3765324" />
+      <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" weight="0.32924694" />
+      <window_info anchor="bottom" id="Database Changes" order="16" weight="0.32924694" />
+      <window_info anchor="bottom" id="Version Control" order="17" weight="0.32924694" />
       <window_info anchor="right" id="Bean Validation" order="0" weight="0.32954547" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -517,16 +568,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/LinkResourceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="50" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/DocumentResourceRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -534,13 +575,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/DocumentResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -648,13 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/2.1.5.RELEASE/8e8ee6b7fbc90aed51973b38c27463739daa6200/spring-data-commons-2.1.5.RELEASE-sources.jar!/org/springframework/data/repository/CrudRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-690">
-          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8f722e16-47a5-45f3-a927-22a38f0b1ca3/console_1.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -666,13 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="86" column="7" lean-forward="true" selection-start-line="86" selection-start-column="7" selection-end-line="86" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Subscription.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -699,38 +719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="86">
           <caret line="8767" column="1" selection-start-line="8767" selection-start-column="1" selection-end-line="8767" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Resource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/TopicRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/TopicService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="52" column="46" selection-start-line="52" selection-start-column="46" selection-end-line="52" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1209#1210#0" expanded="true" />
-            <element signature="e#1277#1278#0" expanded="true" />
-            <element signature="e#1332#1333#0" expanded="true" />
-            <element signature="e#1388#1389#0" expanded="true" />
-            <element signature="e#1433#1434#0" expanded="true" />
-            <element signature="e#1490#1491#0" expanded="true" />
-            <element signature="e#1551#1552#0" expanded="true" />
-            <element signature="e#1607#1608#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -785,159 +773,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Topic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="29" column="36" lean-forward="true" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://8f722e16-47a5-45f3-a927-22a38f0b1ca3/schema/linksharing/table/topic">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://8f722e16-47a5-45f3-a927-22a38f0b1ca3/schema/linksharing/table/subscription">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/SubscriptionRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="21" lean-forward="true" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/SubscriptionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#531#532#0" expanded="true" />
-            <element signature="e#588#589#0" expanded="true" />
-            <element signature="e#757#758#0" expanded="true" />
-            <element signature="e#827#828#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/editprofile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="133" column="77" selection-start-line="133" selection-start-column="77" selection-end-line="133" selection-end-column="77" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/ResourceRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/ResourceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="93" selection-start-line="28" selection-start-column="93" selection-end-line="28" selection-end-column="93" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://8f722e16-47a5-45f3-a927-22a38f0b1ca3/schema/linksharing/table/resource">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/configFile/WebMvcConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="137" column="86" selection-start-line="137" selection-start-column="86" selection-end-line="137" selection-end-column="86" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="432" column="55" selection-start-line="432" selection-start-column="52" selection-end-line="432" selection-end-column="103" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#5;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#5;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#6;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#7;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/resource.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="134" column="44" selection-start-line="134" selection-start-column="44" selection-end-line="134" selection-end-column="44" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/topic.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="194" column="97" selection-start-line="194" selection-start-column="97" selection-end-line="194" selection-end-column="97" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -966,17 +807,191 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/controller/MainController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/topic.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="81" column="9" selection-start-line="81" selection-start-column="9" selection-end-line="81" selection-end-column="9" />
+        <state relative-caret-position="570">
+          <caret line="51" column="122" selection-start-line="51" selection-start-column="103" selection-end-line="51" selection-end-column="130" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Subscription.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="22" column="16" lean-forward="true" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://8f722e16-47a5-45f3-a927-22a38f0b1ca3/schema/linksharing/table/subscription">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Topic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/resource.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3585">
+          <caret line="252" column="43" selection-start-line="252" selection-start-column="43" selection-end-line="252" selection-end-column="43" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.springframework.data/spring-data-commons/2.1.5.RELEASE/8e8ee6b7fbc90aed51973b38c27463739daa6200/spring-data-commons-2.1.5.RELEASE-sources.jar!/org/springframework/data/repository/CrudRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-765">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/SubscriptionRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="109" column="55" selection-start-line="109" selection-start-column="55" selection-end-line="109" selection-end-column="55" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/SubscriptionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="57" column="46" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/SpringLinkSharingApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/editprofile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="225" lean-forward="true" selection-start-line="225" selection-end-line="225" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#2;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/TopicRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/TopicService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#900#901#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/Resource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/entity/DocumentResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://8f722e16-47a5-45f3-a927-22a38f0b1ca3/schema/linksharing/table/topic">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="496" column="126" selection-start-line="496" selection-start-column="126" selection-end-line="496" selection-end-column="126" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#5;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#5;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#5;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#6;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#7;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://8f722e16-47a5-45f3-a927-22a38f0b1ca3/schema/linksharing/table/resource">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/controller/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="203" column="57" selection-start-line="203" selection-start-column="57" selection-end-line="203" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#homePage#0;class#MainController#0" />
             <element signature="method#resetPassword#0;class#MainController#0" />
             <element signature="method#changePassword#0;class#MainController#0" />
             <element signature="method#register#0;class#MainController#0" />
             <element signature="method#login#0;class#MainController#0" />
-            <element signature="method#dash#0;class#MainController#0" />
             <element signature="method#logout#0;class#MainController#0" />
             <element signature="method#editProfile#0;class#MainController#0" />
             <element signature="method#updateProfile#0;class#MainController#0" />
@@ -992,8 +1007,32 @@
             <element signature="method#subscribe#0;class#MainController#0" />
             <element signature="method#createLinkResource#0;class#MainController#0" />
             <element signature="method#createDocumentResource#0;class#MainController#0" />
+            <element signature="method#showUsers#0;class#MainController#0" />
             <element signature="method#getTopic#0;class#MainController#0" />
             <element signature="method#getResource#0;class#MainController#0" />
+            <element signature="method#topicresource#0;class#MainController#0" />
+            <element signature="method#updateSubscription#0;class#MainController#0" />
+            <element signature="method#updateSubscription#1;class#MainController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/repositories/ResourceRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ttn/linksharing/service/ResourceService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

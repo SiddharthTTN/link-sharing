@@ -49,7 +49,7 @@
             <div class="nav navbar float-right" th:unless="${sessionExists}"><a th:href="@{/home}"> Login </a></div>
             <div class="nav navbar float-right" th:if="${sessionExists}">
                 <li class="dropdown"><i class="fas fa-user"> &nbsp &nbsp </i><a class="dropdown-toggle"
-                                                                                data-toggle="dropdown"
+                                                                                data-toggle="dropdown" th:text="*{user.firstName}"
                                                                                 href="#">User<span
                         class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-pad-left">
@@ -88,7 +88,7 @@
                                         <table class="w-100 font-size-15" cellspacing="14px">
                                             <tr>
                                                 <td th:text="'@' + *{topic.user.username}"></td>
-                                                <th>Subscriptions</th>
+                                                <th>Subscribers</th>
                                                 <th>Posts</th>
                                             </tr>
                                             <tr>

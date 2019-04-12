@@ -55,6 +55,7 @@ public class MainController {
     private Boolean status = false;
     private Boolean register = false;
     private Boolean errorlogin = false;
+    boolean docOrLink;
 
 
     @GetMapping("/home")
@@ -198,6 +199,9 @@ public class MainController {
         model.addAttribute("trendingTopics", topics);
         List<com.ttn.linksharing.entity.Resource> subscribedResources = resourceService.getSubscribedResources(subscriptionService.getSubscribedTopics((User) httpSession.getAttribute("user")));
         model.addAttribute("subscribedResources", subscribedResources);
+        System.out.println(subscribedResources.toString());
+        model.addAttribute("docOrLink", docOrLink);
+        System.out.println(resourceService.getDType(11));
         register = false;
         errorlogin = false;
         return "dashboard";
@@ -460,9 +464,7 @@ public class MainController {
 
     @GetMapping("/topic/{topicID}")
     public String getTopic(HttpSession httpSession, @PathVariable("topicID") Integer id, Model model) {
-        boolean sessionExists;
-        sessionExists = httpSession.getAttribute("user") != null;
-        model.addAttribute("sessionExists", sessionExists);
+        topicresource(httpSession, model);
         model.addAttribute("topic", topicService.getTopicById(id));
         model.addAttribute("topicSubscribers", subscriptionService.getSubscriptions(topicService.getTopicById(id)));
         model.addAttribute("subscribedResources", resourceService.getResourcesOfTopic(topicService.getTopicById(id)));
@@ -471,12 +473,45 @@ public class MainController {
 
     @GetMapping("/resource/{resourceID}")
     public String getResource(HttpSession httpSession, @PathVariable("resourceID") Integer id, Model model) {
-        boolean sessionExists;
-        sessionExists = httpSession.getAttribute("user") != null;
-        model.addAttribute("sessionExists", sessionExists);
+        topicresource(httpSession, model);
         List<Topic> topics = resourceService.getTrendingTopics().stream().limit(5).collect(Collectors.toList());
         model.addAttribute("trendingTopics", topics);
         model.addAttribute("resource", resourceService.getResourceById(id));
         return "resource";
     }
+
+    private void topicresource(HttpSession httpSession, Model model) {
+        boolean sessionExists;
+        sessionExists = httpSession.getAttribute("user") != null;
+        model.addAttribute("user", httpSession.getAttribute("user"));
+        model.addAttribute("sessionExists", sessionExists);
+    }
+
+    @DeleteMapping("/deleteTopic")
+    @ResponseBody
+    public void deleteTopic(@RequestParam("id") Integer topicID) {
+        subscriptionService.deleteByTopic(topicService.getTopicById(topicID));
+    }
+
+    @GetMapping("/updateSubscription")
+    @ResponseBody
+    public Integer updateSubscription(HttpSession httpSession) {
+        return subscriptionService.getSubscription((User) httpSession.getAttribute("user"));
+    }
+
+    @GetMapping("/updateTopicCount")
+    @ResponseBody
+    public Integer updateTopic(HttpSession httpSession) {
+        return topicService.getTopics((User) httpSession.getAttribute("user"));
+    }
+
+    @PutMapping("/updateTopic")
+    @ResponseBody
+    public void updateTopic(@RequestParam("id") Integer topicID, @RequestParam("name") String updatedName) {
+        Topic topic = topicService.getTopicById(topicID);
+        topic.setName(updatedName);
+        topicService.save(topic);
+    }
+
+
 }

@@ -6,6 +6,7 @@ import com.ttn.linksharing.enums.Visibility;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface TopicRepository extends CrudRepository<Topic, Integer> {
@@ -20,6 +21,9 @@ public interface TopicRepository extends CrudRepository<Topic, Integer> {
     List<Topic> findByName(String name);
 
     List<Topic> findByUser(User user);
+
+    @Transactional
+    void deleteById(Integer id);
 
 
 }

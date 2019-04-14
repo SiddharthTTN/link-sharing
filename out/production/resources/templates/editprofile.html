@@ -48,18 +48,7 @@
                     <span th:text="${message}" data-dismiss="alert"></span>
                 </div>
             </div>
-            <div class="input-group">
-                <div class="input-group-prepend bg-white">
-                    <span class="input-group-text border-right-0 rounded-right bg-white"><i
-                            class="fas fa-search"></i></span>
-                </div>
-                <input type="text" class="form-control border-right-0 border-left-0" placeholder="Search"
-                       aria-label="Username" aria-describedby="basic-addon1">
-                <div class="input-group-prepend bg-white">
-                    <span class="input-group-text border-left-0 rounded-right bg-white"><i
-                            class="fas fa-times-circle"></i></span>
-                </div>
-            </div>
+            <div th:include="home::search"></div>
         </div>
 
         <!--User Tab-->

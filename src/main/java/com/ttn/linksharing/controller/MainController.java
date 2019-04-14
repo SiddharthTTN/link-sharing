@@ -1,22 +1,21 @@
 package com.ttn.linksharing.controller;
 
 import com.ttn.linksharing.entity.*;
-import com.ttn.linksharing.enums.Seriousness;
 import com.ttn.linksharing.enums.Visibility;
 import com.ttn.linksharing.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -24,7 +23,6 @@ import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Controller
@@ -43,19 +41,25 @@ public class MainController {
     ResourceService resourceService;
 
     @Autowired
-    private JavaMailSender sender;
-
-    @Autowired
     DocumentResourceService documentResourceService;
 
     @Autowired
     LinkResourceService linkResourceService;
+
+    @Autowired
+    ResourceRatingService resourceRatingService;
 
     private Boolean status = false;
     private Boolean register = false;
     private Boolean errorlogin = false;
     boolean docOrLink;
 
+    public List<com.ttn.linksharing.entity.Resource> getTopPosts() {
+        List<com.ttn.linksharing.entity.Resource> topPosts = resourceService.getRecentShares().stream()
+                .filter(e -> e.getTopic().getVisibility() == Visibility.PUBLIC)
+                .collect(Collectors.toList());
+        return topPosts;
+    }
 
     @GetMapping("/home")
     public String homePage(Model model, HttpSession httpSession) {
@@ -69,17 +73,36 @@ public class MainController {
             List<com.ttn.linksharing.entity.Resource> recentShares = resourceService.getRecentShares().stream()
                     .filter(e -> e.getTopic().getVisibility() == Visibility.PUBLIC)
                     .collect(Collectors.toList());
-            List<com.ttn.linksharing.entity.Resource> topPosts = resourceService.getRecentShares().stream()
-                    .filter(e -> e.getTopic().getVisibility() == Visibility.PUBLIC)
-                    .collect(Collectors.toList());
-
             model.addAttribute("recentShares", recentShares);
+            List<com.ttn.linksharing.entity.Resource> topPosts = getTopPosts();
             model.addAttribute("topPosts", topPosts);
             status = false;
             register = false;
             errorlogin = false;
             return "home";
         }
+    }
+
+    @RequestMapping("/sendemail")
+    public String home(String username, RedirectAttributes redirectAttributes) throws Exception {
+        if (username.isEmpty()) {
+            redirectAttributes.addFlashAttribute("message", "Please Fill the Username");
+            status = true;
+            return "redirect:/reset";
+        } else {
+            User user = userService.userExists(username);
+            if (user == null) {
+                redirectAttributes.addFlashAttribute("message", "Username/Email does not exists");
+                status = true;
+                return "redirect:/reset";
+            } else {
+                topicService.sendEmail(user);
+                redirectAttributes.addFlashAttribute("message", "Email with password has been sent successfully");
+                register = true;
+                return "redirect:/home";
+            }
+        }
+
     }
 
     @GetMapping("/reset")
@@ -112,11 +135,7 @@ public class MainController {
     @PostMapping("/register")
     public String register(User user, RedirectAttributes redirectAttributes) {
         String imgVal = "image";
-        if (user.getUserImage().isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please Upload your image");
-            status = true;
-            return "redirect:/home";
-        } else if (!user.getPassword().equals(user.getConfirmPassword())) {
+        if (!user.getPassword().equals(user.getConfirmPassword())) {
             redirectAttributes.addFlashAttribute("message", "Passwords Do not match");
             status = true;
             return "redirect:/home";
@@ -124,7 +143,7 @@ public class MainController {
             redirectAttributes.addFlashAttribute("message", "Please Fill in all the fields");
             status = true;
             return "redirect:/home";
-        } else if (!imgVal.equals((Objects.requireNonNull(user.getUserImage().getContentType())).substring(0, 5))) {
+        } else if (!user.getUserImage().isEmpty() && !imgVal.equals(user.getUserImage().getContentType().substring(0, 5))) {
             redirectAttributes.addFlashAttribute("message", "Please Upload an image file only");
             status = true;
             return "redirect:/home";
@@ -178,144 +197,6 @@ public class MainController {
         }
     }
 
-    @GetMapping("/dashboard")
-    public String dash(Model model, HttpSession httpSession) {
-        model.addAttribute("user", httpSession.getAttribute("user"));
-        model.addAttribute("topic", new Topic());
-        model.addAttribute("topicCount", topicService.getTopics((User) httpSession.getAttribute("user")));
-        model.addAttribute("subscriptionCount", subscriptionService.getSubscription((User) httpSession.getAttribute("user")));
-        model.addAttribute("subscibedTopics", subscriptionService.getSubscribedTopics((User) httpSession.getAttribute("user")));
-        model.addAttribute("register", register);
-        model.addAttribute("errorlogin", errorlogin);
-        List<Subscription> subscriptions = subscriptionService.getSubscriptions((User) httpSession.getAttribute("user"));
-        List<Subscription> ownSubscription = subscriptions.stream()
-                .filter(e -> e.getTopic().getUser().getId().equals(((User) httpSession.getAttribute("user")).getId()))
-                .collect(Collectors.toList());
-        List<Subscription> otherSubscription = subscriptions.stream().filter(e -> !e.getTopic().getUser().getId().equals(((User) httpSession.getAttribute("user")).getId())).collect(Collectors.toList());
-        model.addAttribute("ownSubscriptions", ownSubscription);
-        model.addAttribute("otherSubscription", otherSubscription);
-        List<Topic> topics = resourceService.getTrendingTopics().stream().limit(5).collect(Collectors.toList());
-        model.addAttribute("trendingTopics", topics);
-        List<com.ttn.linksharing.entity.Resource> subscribedResources = resourceService.getSubscribedResources(subscriptionService.getSubscribedTopics((User) httpSession.getAttribute("user")));
-        model.addAttribute("subscribedResources", subscribedResources);
-        model.addAttribute("docOrLink", docOrLink);
-        register = false;
-        errorlogin = false;
-        return "dashboard";
-
-    }
-
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest httpServletRequest, RedirectAttributes redirectAttributes) {
-        httpServletRequest.getSession().invalidate();
-        redirectAttributes.addFlashAttribute("message", "You have been logged out successfully");
-        errorlogin = true;
-        return "redirect:/home";
-    }
-
-    @GetMapping("/profile")
-    public String editProfile(Model model, HttpSession httpSession) {
-/*        if (httpServletRequest.getSession().getAttribute("user") == null) {
-            return "redirect:/home";
-        } else*/
-        model.addAttribute("user", httpSession.getAttribute("user"));
-        model.addAttribute("topicCount", topicService.getTopics((User) httpSession.getAttribute("user")));
-        model.addAttribute("subscriptionCount", subscriptionService.getSubscription((User) httpSession.getAttribute("user")));
-        model.addAttribute("register", register);
-        model.addAttribute("errorlogin", errorlogin);
-        model.addAttribute("ownTopics", topicService.getTopicByUser((User) httpSession.getAttribute("user")));
-        register = false;
-        errorlogin = false;
-        return "editprofile";
-
-    }
-
-    @PostMapping("/updateProfile")
-    public String updateProfile(RedirectAttributes redirectAttributes, User user, HttpSession httpSession) {
-        String imgVal = "image";
-        if (user.getUserImage().isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please Upload your image");
-            errorlogin = true;
-            return "redirect:/profile";
-        } else if (user.getFirstName().isEmpty() || user.getLastName().isEmpty() || user.getUsername().isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please Fill in all the fields");
-            errorlogin = true;
-            return "redirect:/profile";
-        } else if (!imgVal.equals((Objects.requireNonNull(user.getUserImage().getContentType())).substring(0, 5))) {
-            redirectAttributes.addFlashAttribute("message", "Please Upload an image file only");
-            errorlogin = true;
-            return "redirect:/profile";
-        } else {
-            User user2 = userService.usernameExists(user.getUsername());
-            if (user2 == null) {
-                User user3 = (User) httpSession.getAttribute("user");
-                user3.setUsername(user.getUsername());
-                user3.setFirstName(user.getFirstName());
-                user3.setLastName(user.getLastName());
-                user3.setUserImage(user.getUserImage());
-                userService.register(user3);
-                redirectAttributes.addFlashAttribute("message", "Your Profile has been Updated Successfully");
-                register = true;
-                return "redirect:/profile";
-            } else {
-                redirectAttributes.addFlashAttribute("message", "Username already taken");
-                errorlogin = true;
-                return "redirect:/profile";
-            }
-
-        }
-    }
-
-    @PostMapping("/changePasswordFromProfile")
-    public String changePasswordFromProfile(RedirectAttributes redirectAttributes, User user, HttpSession httpSession) throws Exception {
-        if (user.getPassword().isEmpty() || user.getConfirmPassword().isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please Fill in all the fields");
-            errorlogin = true;
-            return "redirect:/profile";
-        } else if (!user.getPassword().equals(user.getConfirmPassword())) {
-            redirectAttributes.addFlashAttribute("message", "Passwords Do not match");
-            errorlogin = true;
-            return "redirect:/profile";
-        } else {
-            user.setUsername(((User) httpSession.getAttribute("user")).getUsername());
-            userService.reset(user);
-            redirectAttributes.addFlashAttribute("message", "Your Password has been changed successfully");
-            register = true;
-            return "redirect:/profile";
-        }
-    }
-
-    @RequestMapping("/sendemail")
-    public String home(String username, RedirectAttributes redirectAttributes) throws Exception {
-        if (username.isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please Fill the Username");
-            status = true;
-            return "redirect:/reset";
-        } else {
-            User user = userService.userExists(username);
-            if (user == null) {
-                redirectAttributes.addFlashAttribute("message", "Username/Email does not exists");
-                status = true;
-                return "redirect:/reset";
-            } else {
-                sendEmail(user);
-                redirectAttributes.addFlashAttribute("message", "Email with password has been sent successfully");
-                register = true;
-                return "redirect:/home";
-            }
-        }
-
-    }
-
-    private void sendEmail(User user) throws Exception {
-        MimeMessage message = sender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message);
-        helper.setTo(user.getEmail());
-        helper.setText("Hello your password is: " + user.getPassword());
-        helper.setSubject("Please Find your password here");
-        sender.send(message);
-    }
-
     @GetMapping("/checkerror")
     public String checkError() {
         userService.checkError("xxx");
@@ -366,60 +247,6 @@ public class MainController {
         }
     }
 
-    @PostMapping("/createTopic")
-    public String createTopic(Topic topic, HttpSession httpSession, Subscription subscription, RedirectAttributes redirectAttributes) {
-        Topic topic1 = topicService.getTopicBySameName((User) httpSession.getAttribute("user"), topic.getName());
-        if (topic1 == null) {
-            topic.setUser((User) httpSession.getAttribute("user"));
-            subscription.setUser((User) httpSession.getAttribute("user"));
-            subscription.setTopic(topic);
-            topicService.save(topic, subscription);
-            redirectAttributes.addFlashAttribute("message", "Topic successfully created     ");
-            register = true;
-            return "redirect:/dashboard";
-        } else {
-            redirectAttributes.addFlashAttribute("message", "Topic already created by you");
-            errorlogin = true;
-            return "redirect:/dashboard";
-        }
-    }
-
-    @PostMapping("sendInvite")
-    public String sendInvite(HttpSession httpSession, RedirectAttributes redirectAttributes, String email, Integer selectedTopic) throws Exception {
-        if (email.isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please enter the email");
-            errorlogin = true;
-            return "redirect:/dashboard";
-        } else if (!userService.validateEmail(email)) {
-            redirectAttributes.addFlashAttribute("message", "Please enter a valid email address");
-            errorlogin = true;
-            return "redirect:/dashboard";
-        } else if (userService.emailExists(email) == null) {
-            redirectAttributes.addFlashAttribute("message", "Email ID Does not exists");
-            errorlogin = true;
-            return "redirect:/dashboard";
-        } else if (subscriptionService.confirmSubscription(userService.emailExists(email), topicService.getTopicById(selectedTopic)) != null) {
-            redirectAttributes.addFlashAttribute("message", "User with this email ID already subscribed to this topic");
-            errorlogin = true;
-            return "redirect:/dashboard";
-        } else {
-            sendInvite((User) httpSession.getAttribute("user"), selectedTopic, email);
-            redirectAttributes.addFlashAttribute("message", "Invitation send Successfully");
-            register = true;
-            return "redirect:/dashboard";
-        }
-    }
-
-    private void sendInvite(User user, Integer selectedTopic, String email) throws Exception {
-
-        MimeMessage message = sender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message);
-        helper.setTo(email);
-        helper.setText("Hello\nTopic Name: " + topicService.getTopicById(selectedTopic).getName() + "\nPlease click on this link to subscribe to this topic: http://localhost:8080/subscribe/" + selectedTopic);
-        helper.setSubject("You have got a new Invitation from " + user.getFirstName() + " " + user.getLastName());
-        sender.send(message);
-    }
-
     @GetMapping("/subscribe/{selectedTopic}")
     public String subscribe(RedirectAttributes redirectAttributes, HttpSession httpSession, @PathVariable("selectedTopic") Integer selectedTopic, Subscription subscription) {
         subscription.setUser((User) httpSession.getAttribute("user"));
@@ -430,68 +257,22 @@ public class MainController {
         return "redirect:/dashboard";
     }
 
-    @PostMapping("/createLinkResource")
-    public String createLinkResource(HttpSession httpSession, RedirectAttributes redirectAttributes, String link, String description, Integer topicId) {
-
-        if (link.isEmpty() || description.isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please Fill in all the fields");
-            errorlogin = true;
-            return "redirect:/dashboard";
-        } else if (description.length() < 100) {
-            redirectAttributes.addFlashAttribute("message", "Description should be of minimum 100 characters");
-            errorlogin = true;
-            return "redirect:/dashboard";
-        } else {
-            linkResourceService.addResource((User) httpSession.getAttribute("user"), topicService.getTopicById(topicId), link, description);
-            redirectAttributes.addFlashAttribute("message", "Your Link resource have been added successfully");
-            register = true;
-            return "redirect:/dashboard";
-        }
-    }
-
     @PostMapping("/editLinkResource")
     public String editLinkResource(String link, String description, Integer resourceId) {
-        LinkResource linkResource= linkResourceService.editResource(resourceId);
+        LinkResource linkResource = linkResourceService.editResource(resourceId);
         linkResource.setUrl(link);
         linkResource.setDescription(description);
         linkResourceService.saveLink(linkResource);
         return "redirect:/resource/" + resourceId;
     }
 
-    @PostMapping("/createDocumentResource")
-    public String createDocumentResource(RedirectAttributes redirectAttributes, HttpSession httpSession, String description, MultipartFile document, Integer topicId) {
-        if (description.isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please Fill in all the fields");
-            errorlogin = true;
-            return "redirect:/dashboard";
-        } else if (document.isEmpty()) {
-            redirectAttributes.addFlashAttribute("message", "Please upload a document");
-            errorlogin = true;
-            return "redirect:/dashboard";
-        } else if (description.length() < 100) {
-            redirectAttributes.addFlashAttribute("message", "Description should be of minimum 100 characters");
-            errorlogin = true;
-            return "redirect:/dashboard";
-        } else {
-            DocumentResource documentResource = new DocumentResource();
-            documentResource.setDocumentResource(document);
-            documentResource.setUser((User) httpSession.getAttribute("user"));
-            documentResource.setDescription(description);
-            documentResource.setTopic(topicService.getTopicById(topicId));
-            documentResourceService.shareDocument(documentResource);
-            redirectAttributes.addFlashAttribute("message", "Document resource have been shared successfully");
-            register = true;
-            return "redirect:/dashboard";
-        }
-    }
-
     @PostMapping("/editDocumentResource")
     public String editDocumentResource(String description, MultipartFile document, Integer resourceId) {
-            DocumentResource documentResource = documentResourceService.getDocumentByID(resourceId);
-            documentResource.setDocumentResource(document);
-            documentResource.setDescription(description);
-            documentResourceService.shareDocument(documentResource);
-            return"redirect:/resource/" + resourceId;
+        DocumentResource documentResource = documentResourceService.getDocumentByID(resourceId);
+        documentResource.setDocumentResource(document);
+        documentResource.setDescription(description);
+        documentResourceService.shareDocument(documentResource);
+        return "redirect:/resource/" + resourceId;
 
     }
 
@@ -516,6 +297,12 @@ public class MainController {
         List<Topic> topics = resourceService.getTrendingTopics().stream().limit(5).collect(Collectors.toList());
         model.addAttribute("trendingTopics", topics);
         model.addAttribute("resource", resourceService.getResourceById(id));
+        if (httpSession.getAttribute("user") != null) {
+            Integer rating = resourceRatingService.getRatingValue((User) httpSession.getAttribute("user"), resourceService.getResourceById(id));
+            model.addAttribute("rating", rating);
+
+        } else
+            model.addAttribute("rating", 0);
         return "resource";
     }
 
@@ -529,53 +316,26 @@ public class MainController {
         model.addAttribute("sessionExists", sessionExists);
     }
 
-    @DeleteMapping("/deleteTopic")
-    @ResponseBody
-    public void deleteTopic(@RequestParam("id") Integer topicID) {
-        subscriptionService.deleteByTopic(topicService.getTopicById(topicID));
+    @GetMapping("/search/{search}")
+    public String search(Model model, @PathVariable("search") String searchParam, HttpSession httpSession) {
+        topicresource(httpSession, model);
+        model.addAttribute("searchParam", searchParam);
+        List<com.ttn.linksharing.entity.Resource> topPosts = getTopPosts();
+        model.addAttribute("topPosts", topPosts);
+        List<Topic> topics = resourceService.getTrendingTopics().stream().limit(5).collect(Collectors.toList());
+        model.addAttribute("trendingTopics", topics);
+        List<com.ttn.linksharing.entity.Resource> resources = resourceService.getAllResources();
+        List<com.ttn.linksharing.entity.Resource> publicResources = resources.stream()
+                .filter(e -> e.getTopic().getVisibility() == Visibility.PUBLIC)
+                .filter(e -> e.getDescription().contains(searchParam) || e.getTopic().getName().contains(searchParam))
+                .collect(Collectors.toList());
+        model.addAttribute("allResources", publicResources);
+        return "search";
     }
 
-    @DeleteMapping("/unsubscribeTopic")
-    @ResponseBody
-    public void unsubscribeTopic(@RequestParam("id") Integer subscriptionID) {
-        subscriptionService.deleteById(subscriptionID);
+    @PostMapping("/search")
+    public String search(String searchParam) {
+        return "redirect:/search/" + searchParam;
     }
-
-    @GetMapping("/updateSubscription")
-    @ResponseBody
-    public Integer updateSubscription(HttpSession httpSession) {
-        return subscriptionService.getSubscription((User) httpSession.getAttribute("user"));
-    }
-
-    @GetMapping("/updateTopicCount")
-    @ResponseBody
-    public Integer updateTopic(HttpSession httpSession) {
-        return topicService.getTopics((User) httpSession.getAttribute("user"));
-    }
-
-    @PutMapping("/updateTopic")
-    @ResponseBody
-    public void updateTopic(@RequestParam("id") Integer topicID, @RequestParam("name") String updatedName) {
-        Topic topic = topicService.getTopicById(topicID);
-        topic.setName(updatedName);
-        topicService.save(topic);
-    }
-
-    @PutMapping("/updateSeriousness")
-    @ResponseBody
-    public void updateSeriousness(@RequestParam("id") Integer subscriptionID, @RequestParam("name") Seriousness updatedSeriousness) {
-        Subscription subscription = subscriptionService.getById(subscriptionID);
-        subscription.setSeriousness(updatedSeriousness);
-        subscriptionService.save(subscription);
-    }
-
-    @PutMapping("/updateVisibility")
-    @ResponseBody
-    public void updateVisibility(@RequestParam("id") Integer topicID, @RequestParam("name") Visibility updatedVisibility) {
-        Topic topic = topicService.getTopicById(topicID);
-        topic.setVisibility(updatedVisibility);
-        topicService.save(topic);
-    }
-
 
 }

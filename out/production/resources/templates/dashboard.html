@@ -41,25 +41,14 @@
                     <span th:text="${message}" data-dismiss="alert"></span>
                 </div>
             </div>
-            <div class="input-group">
-                <div class="input-group-prepend bg-white">
-                    <span class="input-group-text border-right-0 rounded-right bg-white"><i
-                            class="fas fa-search"></i></span>
-                </div>
-                <input type="text" class="form-control border-right-0 border-left-0" placeholder="Search"
-                       aria-label="Username" aria-describedby="basic-addon1">
-                <div class="input-group-prepend bg-white">
-                    <span class="input-group-text border-left-0 rounded-right bg-white"><i
-                            class="fas fa-times-circle"></i></span>
-                </div>
-            </div>
+            <div th:include="home::search"></div>
         </div>
 
         <!--Attachments-->
 
         <div class="col-md-2">
             <div>
-                <span id="basic-addon" class="font-size-23"><a data-toggle="modal" href="#createTopic"><i
+                <span id="basic-addon" class="font-size-23" th:unless="${user.isAdmin}"><a data-toggle="modal" href="#createTopic"><i
                         class="fas fa-comment fa-1.5x"></i></a> &nbsp <a data-toggle="modal" href="#sendInvite"><i
                         class="far fa-envelope"></i></a> &nbsp <a data-toggle="modal" href="#shareLink"><i
                         class="fas fa-link"></i></a> &nbsp <a data-toggle="modal" href="#shareDoc"><i
@@ -253,9 +242,9 @@
                         class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-pad-left">
                         <li><a th:href="@{/profile}"> Profile</a></li>
-                        <li><a href="/users"> Users</a></li>
-                        <li><a href="#"> Topic</a></li>
-                        <li><a href="#"> Posts</a></li>
+                        <li><a th:if=${user.isAdmin} href="/users"> Users</a></li>
+                        <!--<li><a th:if=${user.isAdmin} href="#"> Topic</a></li>-->
+                        <!--<li><a th:if=${user.isAdmin} href="#"> Posts</a></li>-->
                         <li><a th:href="@{/logout}"> Logout</a></li>
                     </ul>
                 </li>
@@ -300,7 +289,7 @@
             <!--Subscriptions-->
 
             <div class="row">
-                <div class="card border-dark mb-3">
+                <div class="card border-dark mb-3 w-100">
                     <div class="card-header">Subscriptions:
                     </div>
                     <div class="card-body text-dark">
@@ -322,7 +311,7 @@
                                              th:id="'updateTopic'+${ownSubscription.topic.id}">
                                             <form class="form-inline">
                                                 <input type="text" class="form-control mb-2 mr-sm-2 w-50"
-                                                       th:placeholder="${ownSubscription.topic.name}"
+                                                       th:value="${ownSubscription.topic.name}"
                                                        id="updatedTopicName" name="updatedTopicName">
                                                 <button type="button" class="updateTopic btn btn-primary mb-2"
                                                         th:data-topicID="${ownSubscription.topic.id}">Update
@@ -338,7 +327,7 @@
                                                 <th>Posts</th>
                                             </tr>
                                             <tr>
-                                                <td><a href="" class="unsubOwn">Unsubscribe</a></td>
+                                                <td><a href="" class="unsubOwn" th:unless="${user.isAdmin}">Unsubscribe</a></td>
                                                 <td th:text="${@subscriptionService.getSubscriptionCount(ownSubscription.topic)}"></td>
                                                 <td th:text="${@resourceService.getResourceCount(ownSubscription.topic)}"></td>
                                             </tr>
@@ -362,7 +351,7 @@
                                                             th:selected="${visibility==ownSubscription.topic.visibility}"
                                                     ></Option>
                                                 </select>&nbsp &nbsp &nbsp
-                                                <a href="#sendInviteFromSub" data-toggle="modal"><i
+                                                <a href="#sendInviteFromSub" data-toggle="modal" th:unless="${user.isAdmin}"><i
                                                         class="far fa-envelope sendInviteFromSub"
                                                         th:data-topicID="${ownSubscription.topic.id}">&nbsp
                                                     &nbsp</i></a>
@@ -397,7 +386,7 @@
                                             <tr>
                                                 <td><a href="#" class="unsubscribeTopic"
                                                        th:data-topicID="${otherSubscription.topic.id}"
-                                                       th:data-subscriptionID="${otherSubscription.id}">Unsubscribe</a>
+                                                       th:data-subscriptionID="${otherSubscription.id}" th:unless="${user.isAdmin}">Unsubscribe</a>
                                                 </td>
                                                 <td th:text="${@subscriptionService.getSubscriptionCount(otherSubscription.topic)}"></td>
                                                 <td th:text="${@resourceService.getResourceCount(otherSubscription.topic)}"></td>
@@ -516,10 +505,10 @@
                                                         th:href="'https://'+${subscribedResource.url}" target="_blank"
                                                         th:if="${@resourceService.getDType(subscribedResource.id)}=='Link'">View Full Site
                                                 </a>&nbsp&nbsp&nbsp
-                                                <a
+                                                <!--<a
                                                         class="link"
                                                         href="">Mark as Read
-                                                </a>&nbsp&nbsp&nbsp
+                                                </a>&nbsp&nbsp&nbsp-->
                                                 <a
                                                         class="link"
                                                         th:href="@{'/resource/'+ ${subscribedResource.id}}">View post
@@ -673,7 +662,7 @@
                 success: function () {
                     alert("Topic Name is changed successfully");
                     $('#updateTopic' + topicId).css('display', 'none');
-                    $('#fixTopic' + topicId).text(updatedName);
+                    $('#fixTopic' + topicId).children('a').text(updatedName);
                     $('#fixTopic' + topicId).css('display', 'block');
 
                 },

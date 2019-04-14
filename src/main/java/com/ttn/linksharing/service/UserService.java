@@ -25,12 +25,16 @@ public class UserService {
     public void register(User user) {
         try {
             // Get the file and save it somewhere
-            MultipartFile multipartFile = user.getUserImage();
-            String fileName = new Date().getTime() + user.getUserImage().getOriginalFilename();
-            String filePath = UPLOAD_IMAGE_FOLDER + fileName.replaceAll(" ", "-");
+            if (user.getUserImage().isEmpty()) {
+                user.setImagePath("default.jpg");
+            } else {
+                MultipartFile multipartFile = user.getUserImage();
+                String fileName = new Date().getTime() + user.getUserImage().getOriginalFilename();
+                String filePath = UPLOAD_IMAGE_FOLDER + fileName.replaceAll(" ", "-");
 //            String filePath = fileName.replaceAll(" ", "-");
-            multipartFile.transferTo(new File(filePath));
-            user.setImagePath(fileName);
+                multipartFile.transferTo(new File(filePath));
+                user.setImagePath(fileName);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,8 +69,9 @@ public class UserService {
     public User usernameExists(String username) {
         return userRepository.findByUsername(username);
     }
+
     public User userExists(String username) {
-        return userRepository.findByUsernameOrEmail(username,username);
+        return userRepository.findByUsernameOrEmail(username, username);
     }
 
     //To Check whether the email is already registered or not
@@ -75,10 +80,21 @@ public class UserService {
     }
 
     //To Throw Error message
-    public User checkError(String username){return  userRepository.findByUsername(username);}
+    public User checkError(String username) {
+        return userRepository.findByUsername(username);
+    }
 
     //Get all Users
-    public List<User> getNonAdminUsers(){return userRepository.findByIsAdminFalse();}
+    public List<User> getNonAdminUsers() {
+        return userRepository.findByIsAdminFalse();
+    }
 
+    public User getUserByID(Integer id) {
+        return userRepository.findById(id).get();
+    }
+
+    public void updateActiveness(User user) {
+        userRepository.save(user);
+    }
 
 }

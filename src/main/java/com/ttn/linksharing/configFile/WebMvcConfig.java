@@ -3,9 +3,7 @@ package com.ttn.linksharing.configFile;
 import com.ttn.linksharing.interceptor.CheckInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +20,12 @@ public class WebMvcConfig implements WebMvcConfigurer {
         excluded.add("/sendemail");
         excluded.add("/topic/**");
         excluded.add("/resource/**");
+        excluded.add("/search/**");
         excluded.add("/login");
         excluded.add("/image/**");
         excluded.add("/**.css");
         excluded.add("/**.js");
         registry.addInterceptor(new CheckInterceptor())
-        .excludePathPatterns(excluded);
+                .excludePathPatterns(excluded);
     }
 }

@@ -1,7 +1,6 @@
 package com.ttn.linksharing.service;
 
 import com.ttn.linksharing.entity.DocumentResource;
-import com.ttn.linksharing.entity.User;
 import com.ttn.linksharing.repositories.DocumentResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +33,7 @@ public class DocumentResourceService {
         documentResourceRepository.save(documentResource);
     }
 
-    public DocumentResource getDocumentByID(Integer id){
+    public DocumentResource getDocumentByID(Integer id) {
         return documentResourceRepository.findById(id).get();
     }
 }

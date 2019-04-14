@@ -22,6 +22,7 @@ import javax.servlet.http.HttpSession;
 import java.net.MalformedURLException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -276,9 +277,15 @@ public class MainController {
 
     }
 
-    @GetMapping("/users")
-    public String showUsers(Model model) {
-        model.addAttribute("users", userService.getNonAdminUsers());
+    @GetMapping("/users/{pageNumber}")
+    public String showUsers(Model model,@PathVariable("pageNumber")Integer pagenumber) {
+        model.addAttribute("users", userService.getNonAdminUsers(pagenumber).getContent());
+        List<Integer> pages=new ArrayList<>();
+        Integer pageCount=userService.getNonAdminUsers(pagenumber).getTotalPages();
+        for(int i=0;i<pageCount;i++){
+            pages.add(i);
+        }
+        model.addAttribute("pages",pages);
         return "adminProfile";
     }
 
@@ -327,7 +334,7 @@ public class MainController {
         List<com.ttn.linksharing.entity.Resource> resources = resourceService.getAllResources();
         List<com.ttn.linksharing.entity.Resource> publicResources = resources.stream()
                 .filter(e -> e.getTopic().getVisibility() == Visibility.PUBLIC)
-                .filter(e -> e.getDescription().contains(searchParam) || e.getTopic().getName().contains(searchParam))
+                .filter(e -> e.getDescription().toLowerCase().contains(searchParam.toLowerCase()) || e.getTopic().getName().toLowerCase().contains(searchParam.toLowerCase()))
                 .collect(Collectors.toList());
         model.addAttribute("allResources", publicResources);
         return "search";

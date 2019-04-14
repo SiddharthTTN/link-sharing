@@ -92,11 +92,13 @@
                                 <td th:unless="${user.isActive}">No</td>
                                 <td th:if="${user.isActive}" th:data-userID="${user.id}">
                                     <button class="deact btn btn-danger" href="#">De-activate</button>
-                                    <button class="act btn btn-success" style="display: none;" href="#">Activate</button>
+                                    <button class="act btn btn-success" style="display: none;" href="#">Activate
+                                    </button>
                                 </td>
                                 <td th:unless="${user.isActive}" th:data-userID="${user.id}">
                                     <button class="act btn btn-success" href="#">Activate</button>
-                                    <button class="deact btn btn-danger" style="display: none;" href="#">De-activate</button>
+                                    <button class="deact btn btn-danger" style="display: none;" href="#">De-activate
+                                    </button>
                                 </td>
                             </tr>
                             </tbody>
@@ -107,10 +109,35 @@
 
         </div>
     </div>
+    <br>
+    <input type="hidden" th:data-value="${pages}" id="pageCount">
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">&laquo;</a>
+                    </li>
+                    <div id="pageNo" th:each="pageNumber : ${pages}">
+                        <li class="page-item"><a class="page-link" th:href="'/users/'+${pageNumber}" th:text="${pageNumber}+1"></a></li>
+                    </div>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#">&raquo;</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 </div>
 </body>
 <script>
     $(document).ready(function () {
+        var a = $('#pageCount').attr("data-value");
+        console.log(a);
+
+        for (i = 0; i < a; i++) {
+            $('#page1').clone().appendTo('#pageNO');
+        }
 
         $('.deact').click(function (e) {
             e.preventDefault();

@@ -3,6 +3,9 @@ package com.ttn.linksharing.service;
 import com.ttn.linksharing.entity.User;
 import com.ttn.linksharing.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -85,8 +88,9 @@ public class UserService {
     }
 
     //Get all Users
-    public List<User> getNonAdminUsers() {
-        return userRepository.findByIsAdminFalse();
+    public Page<User> getNonAdminUsers(Integer pageNumber) {
+        return userRepository.findByIsAdminFalse(new PageRequest(pageNumber,3,new Sort(Sort.Direction.ASC,"id")));
+
     }
 
     public User getUserByID(Integer id) {

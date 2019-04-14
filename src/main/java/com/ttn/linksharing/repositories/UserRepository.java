@@ -1,6 +1,8 @@
 package com.ttn.linksharing.repositories;
 
 import com.ttn.linksharing.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -20,6 +22,6 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
     User findByEmailAndPassword(String username, String password);
 
-    List<User> findByIsAdminFalse();
+    Page<User> findByIsAdminFalse(Pageable pageable);
 }
 

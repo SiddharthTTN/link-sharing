@@ -1,9 +1,7 @@
 package com.ttn.linksharing.entity;
 
 import com.ttn.linksharing.enums.Visibility;
-import com.ttn.linksharing.service.SubscriptionService;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.List;

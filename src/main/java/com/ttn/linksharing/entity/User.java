@@ -1,11 +1,9 @@
 package com.ttn.linksharing.entity;
 
 import lombok.Data;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Data
 @Entity

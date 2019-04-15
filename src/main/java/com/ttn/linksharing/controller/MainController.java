@@ -56,7 +56,7 @@ public class MainController {
     boolean docOrLink;
 
     public List<com.ttn.linksharing.entity.Resource> getTopPosts() {
-        List<com.ttn.linksharing.entity.Resource> topPosts = resourceService.getRecentShares().stream()
+        List<com.ttn.linksharing.entity.Resource> topPosts = resourceRatingService.getTopPosts().stream()
                 .filter(e -> e.getTopic().getVisibility() == Visibility.PUBLIC)
                 .collect(Collectors.toList());
         return topPosts;

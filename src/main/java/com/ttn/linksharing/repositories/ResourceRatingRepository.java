@@ -21,4 +21,7 @@ public interface ResourceRatingRepository extends CrudRepository<ResourceRating,
     @Query("select r.rating from ResourceRating r where r.user=:user and r.resource=:resource")
     Integer getRating(@Param("user") User user, @Param("resource") Resource resource);
 
+    @Query("select r.resource from ResourceRating r group by r.resource order by avg (r.rating) desc ")
+    List<Resource> findTopPosts();
+
 }
